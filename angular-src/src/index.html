@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>AngularSrc</title>
@@ -7,8 +8,81 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .full-page {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #242533;
+    }
+    
+    .loader {
+      display: flex;
+      align-items: center;
+    }
+    
+    .loader>* {
+      height: 3em;
+      width: 1em;
+      display: inline-block;
+      background-color: #FF9800;
+      margin-right: 4px;
+      animation: grow 1.6s infinite ease-in-out;
+    }
+    
+    .loader2 {
+      animation-delay: -1.5s;
+    }
+    
+    .loader3 {
+      animation-delay: -1.4s;
+    }
+    
+    .loader4 {
+      animation-delay: -1.3s;
+    }
+    
+    .loader5 {
+      animation-delay: -1.2s;
+    }
+    
+    .loader6 {
+      animation-delay: -1.1s;
+    }
+    
+    @keyframes grow {
+      0%,
+      40%,
+      100% {
+        transform: scaleY(1.0);
+      }
+      20% {
+        transform: scaleY(1.75);
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <app-root>Loading...</app-root>
+  <app-root>
+    <div class="full-page">
+      <div class="loader">
+        <div class="loader1"></div>
+        <div class="loader2"></div>
+        <div class="loader3"></div>
+        <div class="loader4"></div>
+        <div class="loader5"></div>
+        <div class="loader6"></div>
+      </div>
+    </div>
+  </app-root>
 </body>
+
 </html>

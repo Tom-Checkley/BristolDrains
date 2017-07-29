@@ -1,0 +1,41 @@
+// Flexbox
+@mixin flex($direction: null, $justify: null, $align: null) {
+  display: flex;
+  @if $direction {
+    @if $direction=="row" or $direction=="column" or $direction=="row-reverse" or $direction="column-reverse" {
+      flex-direction: #{$direction};
+    }
+    @else {
+      @error "`#{direction}` is an incorrect flex direction";
+    }
+  }
+  @if $justify {
+    @if $justify=="start" or $justify=="center" or $justify=="between" or $justify=="around" or $justify=="end" {
+      @if $justify=="center" {
+        justify-content: #{$justify};
+      }
+      @else if $justify=="between" or $justify=="around" {
+        justify-content: space-#{$justify};
+      }
+      @else if $justify=="start" or $justify=="end" {
+        justify-content: flex-#{$justify};
+      }
+    }
+    @else {
+      @error "`#{$justify}` is an incorrect justify value";
+    }
+  }
+  @if $align {
+    @if $align=="start" or $align=="end" or $align=="stretch" or $align=="baseline" or $align=="center" {
+      @if $align=="start" or $align=="end" {
+        align-items: flex-#{$align};
+      }
+      @else if $align=="stretch" or $align=="baseline" or $align=="center" {
+        align-items: #{$align};
+      }
+    }
+    @else {
+      @error "`#{$align}` is an incorrect align value";
+    }
+  }
+}

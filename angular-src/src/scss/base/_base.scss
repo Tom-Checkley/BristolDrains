@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 1em;
+}
+
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+i {
+  font-style: normal;
+}
+
+ul {
+  padding: none;
+  list-style: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &.active {
+    color: blue;
+  }
+}
+
+img {
+  max-width: 100%;
+}
