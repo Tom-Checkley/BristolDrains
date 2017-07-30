@@ -1,4 +1,8 @@
 .app {
   min-height: 100vh;
   @include flex($direction: column, $justify: between);
+  @include e(body) {
+    background-color: $white;
+    height: auto;
+  }
 }

@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
   }
 
   screenWidth() {
-    if (window.innerWidth >= 768) {
+    if (window.innerWidth >= 800) {
       this.menuState = 'in';
       this.smallScreen = false;
     } else {
@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu() {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 800) {
       this.menuState = this.menuState === 'out' ? 'in' : 'out';
     }
   }
