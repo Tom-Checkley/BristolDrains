@@ -1,0 +1,17 @@
+.bg {
+  background-color: $bg-color;
+  color: $text-color;
+  .heading {
+    color: $contrast-color;
+  }
+  @include m(opaque) {
+    background-color: rgba($bg-color, $opacity);
+  }
+  @include m(contrast) {
+    background-color: $contrast-color;
+    color: $bg-color;
+    .heading {
+      color: $bg-color;
+    }
+  }
+}

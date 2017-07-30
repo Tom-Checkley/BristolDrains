@@ -1,0 +1,36 @@
+// text 
+$base__font-size: 16px;
+$base__line-h: 24px;
+$head-font: 'Raleway',
+'Franklin Gothic Medium',
+'Arial Narrow',
+Arial,
+sans-serif;
+$main-font: 'Roboto',
+'Franklin Gothic Medium',
+'Arial Narrow',
+Arial,
+sans-serif;
+// breakpoints
+$breakpoint-sm: 1px;
+$breakpoint-md: 500px;
+$breakpoint-lg: 768px;
+$breakpoint-x-lg: 1100px;
+// breakpoint heights
+$header-height-sm: 153px;
+$header-height-lg: 125px;
+$footer-height-sm: 282px;
+$footer-height-md-up: 138px;
+$panel-height-sm: calc(100vh - #{$header-height-sm} - #{$footer-height-sm});
+$panel-height-md: calc(100vh - #{$header-height-sm} - #{$footer-height-md-up});
+$panel-height-lg: calc(100vh - #{$header-height-lg} - #{$footer-height-md-up});
+// colors
+$white: #fff;
+$orange: #FF9800;
+$grey-black: #242533;
+$bg-color: $grey-black;
+$contrast-color: $orange;
+$text-color: $white;
+$opacity: 0.8;
+// padding and margins
+$padding: 1.5rem;
