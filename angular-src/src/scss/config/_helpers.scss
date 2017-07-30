@@ -1,3 +1,4 @@
+// Background Colors
 .bg {
   background-color: $bg-color;
   color: $text-color;
@@ -13,5 +14,33 @@
     .heading {
       color: $bg-color;
     }
+  }
+}
+
+// Buttons
+.btn {
+  border-radius: .25rem;
+  padding: .25rem 1rem;
+  display: inline-block;
+  @include m(regular) {
+    color: $contrast-color;
+    background-color: inherit;
+    border: 2px $contrast-color solid;
+    &:hover {
+      background-color: $contrast-color;
+      color: $bg-color;
+    }
+  }
+  @include m(inverted) {
+    color: $bg-color;
+    border-color: $bg-color;
+    &:hover {
+      background-color: $bg-color;
+      color: $contrast-color;
+    }
+  }
+  @include m(no-border) {
+    border: none;
+    padding: 0;
   }
 }

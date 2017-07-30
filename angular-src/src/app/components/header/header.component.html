@@ -1,9 +1,15 @@
-<header class="header bg">
-  <div class="header__holder">
-    <h1 class="header__title heading">Professional Bristol Drain Clearance</h1>
-    <a class="btn btn--inverted" href="tel:+441179080116"><i>&#9742;</i> 01179 080116</a>
+<header class="bg" (window:resize)="screenWidth()">
+  <div class="header__container">
+    <div class="header__title">
+      <h1 class="heading">Professional Bristol Drain Clearance</h1>
+      <a class="btn btn--regular header__phone" href="tel:+441179080116"><i>&#9742;</i> 01179 080116</a>
+    </div>
+
+    <button class="header__menu-button" (click)="toggleMenu()"><i>&#9776;</i></button>
+
   </div>
-  <nav class="nav">
+  <nav class="nav" [@slideInOut]="menuState">
+    <button class="nav__close" (click)="toggleMenu()"><i>&#10006;</i></button>
     <ul class="nav__links">
       <li>
         <a href="">Home</a>
@@ -15,7 +21,7 @@
         <a href="">About</a>
       </li>
       <li>
-        <a href="">Tips and Advice</a>
+        <a href="">Tips</a>
       </li>
       <li>
         <a href="">Testimonials</a>

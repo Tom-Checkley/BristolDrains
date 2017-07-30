@@ -1,15 +1,74 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  animations: [
+    trigger('slideInOut', [
+      state('in', style({
+        display: 'block',
+        left: '0'
+      })),
+      state('out', style({
+        left: '100%',
+        display: 'none'
+      })),
+      transition('in => out', animate('400ms ease-in-out')),
+      transition('out => in', animate('400ms ease-in-out'))
+    ]),
+  //   trigger('toggleDropdown', [
+  //     state('up', style({
+  //       display: 'none',
+  //       height: 0
+  //     })),
+  //     state('down', style({
+  //       display: 'block',
+  //       height: 'auto'
+  //     })),
+  //     transition('up => down', animate('400ms ease-in-out')),
+  //     transition('down => up', animate('400ms ease-in-out'))
+  //   ])
+  ]
 })
 export class HeaderComponent implements OnInit {
+
+  menuState = 'out';
+  dropDownState = 'up';
+  smallScreen;
 
   constructor() { }
 
   ngOnInit() {
+    this.screenWidth();
+  }
+
+  screenWidth() {
+    if (window.innerWidth >= 768) {
+      this.menuState = 'in';
+      this.smallScreen = false;
+    } else {
+      this.menuState = 'out';
+      this.smallScreen = true;
+    }
+  }
+
+  toggleMenu() {
+    if (window.innerWidth <= 768) {
+      this.menuState = this.menuState === 'out' ? 'in' : 'out';
+    }
+  }
+
+  toggleDropdown(e) {
+    e.preventDefault();
+    this.dropDownState = this.dropDownState === 'up' ? 'down' : 'up';
+  }
+
+  keyUp(e) {
+    if(e.charCode === 13) {
+      this.toggleDropdown(e);
+    }
   }
 
 }

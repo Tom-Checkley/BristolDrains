@@ -1,0 +1,98 @@
+.header {
+  padding: 1.5rem;
+  @include e(container) {
+    @include flex($justify: between, $align: center);
+  }
+  @include e(title) {
+    @include mq(large) {
+      width: 100%;
+      @include flex($justify: between, $align: center);
+    }
+  }
+  h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    width: 70%;
+    margin-bottom: 1rem;
+    @include mq(medium) {
+      font-size: 1.5rem;
+    }
+    @include mq(large) {
+      font-size: 1.75rem;
+      width: auto;
+      margin-bottom: 0;
+    }
+  }
+  @include e(phone) {
+    @include mq(large) {
+      border: none;
+      font-size: 1.75rem;
+    }
+  }
+  @include e(menu-button) {
+    display: block;
+    font-size: 2rem;
+    // z-index: 2000;
+    &:hover {
+      color: $orange;
+    }
+    @include mq(large) {
+      display: none;
+    }
+  }
+  .nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: $grey-black;
+    left: 100%;
+    z-index: 1000;
+    @include mq(large) {
+      height: auto;
+      position: relative;
+    }
+    @include e(close) {
+      position: absolute;
+      right: 1.5rem;
+      top: 1.5rem;
+      display: block;
+      font-size: 2rem;
+      &:hover {
+        color: $orange;
+      }
+      @include mq(large) {
+        display: none;
+      }
+    }
+    @include e(links) {
+      height: 70vh;
+      margin-top: 15vh;
+      @include flex($direction: column, $justify: around, $align: center);
+      @include mq(large) {
+        height: auto;
+        flex-direction: row;
+        margin-top: 1rem;
+      }
+      li {
+        @include mq(large) {
+          // width: 20%;
+          text-align: center;
+          position: relative;
+        }
+      }
+      .active {
+        color: $orange;
+      }
+      a {
+        font-size: 1.5rem;
+        &:hover {
+          color: $orange;
+        }
+        @include mq(large) {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
