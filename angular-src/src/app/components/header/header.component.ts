@@ -18,18 +18,6 @@ import { Component, OnInit, trigger, state, style, transition, animate } from '@
       transition('in => out', animate('400ms ease-in-out')),
       transition('out => in', animate('400ms ease-in-out'))
     ]),
-  //   trigger('toggleDropdown', [
-  //     state('up', style({
-  //       display: 'none',
-  //       height: 0
-  //     })),
-  //     state('down', style({
-  //       display: 'block',
-  //       height: 'auto'
-  //     })),
-  //     transition('up => down', animate('400ms ease-in-out')),
-  //     transition('down => up', animate('400ms ease-in-out'))
-  //   ])
   ]
 })
 export class HeaderComponent implements OnInit {

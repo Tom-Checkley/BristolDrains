@@ -3,6 +3,12 @@
   @include flex($direction: column, $justify: between);
   @include e(body) {
     background-color: $white;
-    height: auto;
+    min-height: $panel-height-sm;
+    @include mq(medium) {
+      min-height: $panel-height-md;
+    }
+    @include mq(large) {
+      min-height: $panel-height-lg;
+    }
   }
 }

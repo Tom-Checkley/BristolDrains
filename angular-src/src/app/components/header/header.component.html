@@ -11,29 +11,29 @@
   <nav class="nav" [@slideInOut]="menuState">
     <button class="nav__close" (click)="toggleMenu()"><i>&#10006;</i></button>
     <ul class="nav__links">
-      <li>
-        <a href="">Home</a>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/']" (click)="toggleMenu()">Home</a>
       </li>
-      <li>
-        <a href="">Services</a>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/about']" (click)="toggleMenu()">About</a>
       </li>
-      <li>
-        <a href="">About</a>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/services']" (click)="toggleMenu()">Services</a>
       </li>
-      <li>
-        <a href="">Tips</a>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/tips']" (click)="toggleMenu()">Tips</a>
       </li>
-      <li>
-        <a href="">Testimonials</a>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/testimonials']" (click)="toggleMenu()">Testimonials</a>
       </li>
-      <li>
-        <a href="">Locations</a>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/locations']" (click)="toggleMenu()">Locations</a>
       </li>
-      <li>
-        <a href="">Blog</a>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/blog']" (click)="toggleMenu()">Blog</a>
       </li>
-      <li>
-        <a href="">Contact</a>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/contact']" (click)="toggleMenu()">Contact</a>
       </li>
     </ul>
   </nav>

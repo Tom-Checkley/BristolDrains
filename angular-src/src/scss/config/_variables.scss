@@ -18,11 +18,12 @@ $breakpoint-lg: 800px;
 $breakpoint-x-lg: 1100px;
 // breakpoint heights
 $header-height-sm: 140px;
-$header-height-lg: 125px;
-$footer-height-sm: 282px;
-$footer-height-md-up: 138px;
+$header-height-md: 148px;
+$header-height-lg: 122px;
+$footer-height-sm: 354px;
+$footer-height-md-up: 184px;
 $panel-height-sm: calc(100vh - #{$header-height-sm} - #{$footer-height-sm});
-$panel-height-md: calc(100vh - #{$header-height-sm} - #{$footer-height-md-up});
+$panel-height-md: calc(100vh - #{$header-height-md} - #{$footer-height-md-up});
 $panel-height-lg: calc(100vh - #{$header-height-lg} - #{$footer-height-md-up});
 // colors
 $white: #fff;

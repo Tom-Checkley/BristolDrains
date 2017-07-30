@@ -1,0 +1,40 @@
+footer {
+  padding: 1.5rem;
+  text-align: center;
+  .social {
+    margin-bottom: 1rem;
+    @include e(links) {
+      margin-bottom: 1rem;
+      a {
+        display: inline-block;
+        &:first-of-type {
+          margin-right: 1rem;
+        }
+      }
+    }
+    @include mq(medium) {
+      order: 2;
+      width: 40%;
+      margin-bottom: 0;
+    }
+    @include mq(large) {
+      width: auto;
+    }
+  }
+  .nav__links {
+    @include mq(medium) {
+      width: 60%;
+      @include flex();
+      flex-wrap: wrap;
+    }
+    li {
+      @include mq(medium) {
+        width: 50%;
+      }
+      margin: .5rem 0;
+    }
+  }
+  @include mq(medium) {
+    @include flex($justify: between, $align: center);
+  }
+}

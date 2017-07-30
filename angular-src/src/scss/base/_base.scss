@@ -23,6 +23,7 @@ h6 {
 
 i {
   font-style: normal;
+  display: inline-block;
 }
 
 ul {
@@ -40,6 +41,9 @@ button {
 a {
   text-decoration: none;
   color: inherit;
+  &:hover {
+    color: $contrast-color;
+  }
 }
 
 img {

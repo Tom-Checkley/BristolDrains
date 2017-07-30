@@ -1,3 +1,39 @@
-<p>
-  footer works!
-</p>
+<footer class="footer">
+  <div class="social">
+    <div class="social__links">
+      <a href=""><i class="icon-facebook2"></i></a>
+      <a href=""><i class="icon-twitter2"></i></a>
+    </div>
+    <div>
+      <a class="btn btn--regular footer__phone" href="tel:+441179080116"><i>&#9742;</i> 01179 080116</a>
+    </div>
+  </div>
+  <nav class="nav">
+    <ul class="nav__links">
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/']">Home</a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/about']">About</a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/services']">Services</a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/tips']">Tips</a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/testimonials']">Testimonials</a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/locations']">Locations</a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/blog']">Blog</a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/contact']">Contact</a>
+      </li>
+    </ul>
+  </nav>
+</footer>
