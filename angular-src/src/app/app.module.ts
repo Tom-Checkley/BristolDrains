@@ -18,6 +18,8 @@ import { ClearanceComponent } from './components/clearance/clearance.component';
 import { InstallationComponent } from './components/installation/installation.component';
 import { RepairsComponent } from './components/repairs/repairs.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { TipsComponent } from './components/tips/tips.component';
+import { LocationsComponent } from './components/locations/locations.component';
 
 
 const appRoutes: Routes = [
@@ -30,6 +32,8 @@ const appRoutes: Routes = [
   { path: 'services/tanker', component: TankerComponent},
   { path: 'services/repairs', component: RepairsComponent},
   { path: 'contact', component: ContactComponent},
+  { path: 'tips', component: TipsComponent},
+  { path: 'locations', component: LocationsComponent},
 ];
 
 @NgModule({
@@ -46,7 +50,9 @@ const appRoutes: Routes = [
     ClearanceComponent,
     InstallationComponent,
     RepairsComponent,
-    ContactComponent
+    ContactComponent,
+    TipsComponent,
+    LocationsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,11 @@
+.locations {
+  background: url('https://maps.googleapis.com/maps/api/staticmap?center=clifton+bristol&zoom=9&scale=1&size=640x400&maptype=roadmap&format=jpg&visual_refresh=true') no-repeat center center;
+  // background-attachment: fixed;
+  background-size: cover;
+  ul {
+    list-style: disc;
+    list-style-position: inside;
+    font-family: $text;
+    font-size: 1.2rem;
+  }
+}
