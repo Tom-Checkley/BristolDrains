@@ -1,3 +1,36 @@
-<p>
-  cctv works!
-</p>
+<div class="page">
+  <main class="page--no-skew with-aside">
+    <nav class="services__nav">
+      <ul class="services__links">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/services/clearance']">Drain Clearance</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/services/cctv']">CCTV Inspections</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/services/repairs']">Drain Repairs</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/services/installation']">Drain Installation</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/services/tanker']">Tanker Services</a>
+        </li>
+      </ul>
+    </nav>
+    <article>
+      <h1 class="heading">CCTV Drain Inspections</h1>
+      <img src="assets/img/cctv.jpg" alt="picture taken with a remote cotrolled cctv camera while inspecting a drain">
+      <p>CCTV drain inspections are the least invasive and most cost effective way of checking the general condition of your drains. Our engineers sometimes find, during the course of clearing a blocked drain indications of a more involved drain problem
+        including root ingress or damaged drain runs. As our vans are fully equipped we can easily carry out a drain survey after the drain has been cleared to ascertain the root cause of the problem.</p>
+      <p>Surveys are also a useful tool to diagnose problems if you suddenly develop odd smells around the house or unexpected damp patches.</p>
+      <p>If you are in the process of purchasing a new property drain inspections can prove invaluable in checking the general health and condition of the drains. Collapsed or damaged drains can be very costly to repair so it is essential to find out if
+        any such problems existing. If problems are found the written report can be a great bargaining tool in revising the purchase price to reflect the cost of the drain repair or in negotiating with the seller the possibility of having the repairs
+        done prior to purchase.</p>
+      <h2><i>&#9742;</i> 01179 080116</h2>
+    </article>
+
+  </main>
+  <app-policies class="aside"></app-policies>
+</div>

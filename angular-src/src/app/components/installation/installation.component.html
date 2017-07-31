@@ -1,0 +1,35 @@
+<div class="page">
+  <main class="page--no-skew with-aside">
+    <nav class="services__nav">
+      <ul class="services__links">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/services/clearance']">Drain Clearance</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/services/cctv']">CCTV Inspections</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/services/repairs']">Drain Repairs</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/services/installation']">Drain Installation</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/services/tanker']">Tanker Services</a>
+        </li>
+      </ul>
+    </nav>
+    <article>
+      <h1 class="heading">Drain Installation</h1>
+      <img src="./assets/img/installation.jpg" alt="">
+      <p>If you need a partial or complete drain installation then look no further. We offer a full service from initial site visit to written quotation and scheduling of works. We can help you plan the best way to route your drains and stop you falling
+        foul of local building regulations. Our team of experienced engineers will help you fully through the process.</p>
+      <p>If you are considering fitting a new en-suite or building an extension you will need to consider the best way of incorporating your existing drainage system with any new drainage requirements. We are able to use our drain tracing equipment to help
+        you find the most cost effective solution to your new drain installation.</p>
+      <p>We can also re-route drain if the cost of repairing your current drain exceeds the cost to have the drain re-run.</p>
+      <h2><i>&#9742;</i> 01179 080116</h2>
+    </article>
+
+  </main>
+  <app-policies class="aside"></app-policies>
+</div>

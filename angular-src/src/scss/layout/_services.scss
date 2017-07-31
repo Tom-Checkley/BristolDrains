@@ -48,4 +48,10 @@
   .contact {
     padding: 1.5rem;
   }
+  @include e(links) {
+    display: none;
+    @include mq(medium) {
+      @include flex($justify: between);
+    }
+  }
 }
