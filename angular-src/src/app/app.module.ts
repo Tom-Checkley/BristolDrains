@@ -10,10 +10,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { PoliciesComponent } from './components/policies/policies.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
 ];
 
 @NgModule({
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    PoliciesComponent
+    PoliciesComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

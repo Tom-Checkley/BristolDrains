@@ -23,4 +23,10 @@
   .heading {
     color: $contrast-color;
   }
+  @include m(full) {
+    @include clip(small);
+    & .skewed__content {
+      width: 80%;
+    }
+  }
 }

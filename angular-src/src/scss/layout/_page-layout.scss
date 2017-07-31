@@ -23,7 +23,6 @@
       @include mq(large) {
         display: block;
         width: 33.33%;
-        // flex-grow: 1;
         min-height: 100%;
         max-width: 490px;
         &>* {

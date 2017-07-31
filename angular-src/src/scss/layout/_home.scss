@@ -1,4 +1,22 @@
 .home {
   background: url('./assets/img/drain.jpg') center center no-repeat;
   background-size: cover;
+  .banner {
+    height: 100%;
+    @include e(heading) {
+      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-family: $main-font;
+    }
+    .header__phone {
+      font-size: 1.5rem;
+      padding: 0;
+      margin: 2.5rem 0;
+      @include mq(x-large) {
+        font-size: 2.5rem;
+      }
+    }
+  }
 }

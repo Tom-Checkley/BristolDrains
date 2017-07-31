@@ -1,0 +1,18 @@
+.page--no-skew {
+  padding: 1.5rem;
+  color: $bg-color;
+  img {
+    @include mq(medium) {
+      float: left;
+      width: 50%;
+      margin: 0 1.5rem 1.5rem 0;
+    }
+    @include mq(x-large) {
+      width: 33.33%;
+    }
+  }
+  p {
+    font-family: $text;
+    font-size: 1.2rem;
+  }
+}

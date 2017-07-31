@@ -1,0 +1,5 @@
+@mixin bg($url) {
+  background: url('./assets/img/#{$url}') center center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
