@@ -1,0 +1,26 @@
+.skewed {
+  position: relative;
+  height: calc(100% + 4px);
+  top: -2px;
+  bottom: -2px;
+  left: -1px;
+  width: calc(100% + 1px);
+  @include clip(small);
+  @include mq(large) {
+    @include clip(large);
+  }
+  @include e(container) {
+    position: relative;
+    overflow: hidden;
+  }
+  @include e(content) {
+    padding: 1.5rem;
+    width: 80%;
+    @include mq(large) {
+      width: 50%;
+    }
+  }
+  .heading {
+    color: $contrast-color;
+  }
+}

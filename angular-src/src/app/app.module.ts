@@ -8,14 +8,21 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { PoliciesComponent } from './components/policies/policies.component';
 
-const appRoutes: Routes = [];
+
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    PoliciesComponent
   ],
   imports: [
     BrowserModule,

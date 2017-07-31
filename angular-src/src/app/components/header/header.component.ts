@@ -47,16 +47,4 @@ export class HeaderComponent implements OnInit {
       this.menuState = this.menuState === 'out' ? 'in' : 'out';
     }
   }
-
-  toggleDropdown(e) {
-    e.preventDefault();
-    this.dropDownState = this.dropDownState === 'up' ? 'down' : 'up';
-  }
-
-  keyUp(e) {
-    if(e.charCode === 13) {
-      this.toggleDropdown(e);
-    }
-  }
-
 }

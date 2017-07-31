@@ -1,14 +1,35 @@
 .app {
   min-height: 100vh;
   @include flex($direction: column, $justify: between);
-  @include e(body) {
+  @include e(content) {
     background-color: $white;
+  }
+  .page {
+    position: relative;
     min-height: $panel-height-sm;
     @include mq(medium) {
       min-height: $panel-height-md;
     }
     @include mq(large) {
       min-height: $panel-height-lg;
+    }
+    @include flex($align: stretch);
+    .with-aside {
+      flex-basis: 66.66%;
+      flex-grow: 2;
+    }
+    .aside {
+      display: none;
+      @include mq(large) {
+        display: block;
+        width: 33.33%;
+        // flex-grow: 1;
+        min-height: 100%;
+        max-width: 490px;
+        &>* {
+          height: 100%;
+        }
+      }
     }
   }
 }

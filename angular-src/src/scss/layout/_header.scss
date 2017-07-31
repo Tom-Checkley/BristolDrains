@@ -76,13 +76,9 @@
       }
       li {
         @include mq(large) {
-          // width: 20%;
           text-align: center;
           position: relative;
         }
-      }
-      .active {
-        color: $orange;
       }
       a {
         font-size: 1.5rem;

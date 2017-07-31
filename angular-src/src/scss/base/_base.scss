@@ -46,6 +46,10 @@ a {
   }
 }
 
+.active {
+  color: $contrast-color;
+}
+
 img {
   max-width: 100%;
 }
