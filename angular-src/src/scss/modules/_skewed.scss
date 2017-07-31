@@ -1,8 +1,10 @@
 .skewed {
   position: relative;
-  height: calc(100% + 4px);
-  top: -2px;
-  bottom: -2px;
+  height: calc(100% + 16px);
+  margin-top: -8px;
+  margin-bottom: -8px;
+  // top: 0;
+  // bottom: 0;
   left: -1px;
   width: calc(100% + 1px);
   @include clip(small);
@@ -19,9 +21,6 @@
     @include mq(large) {
       width: 50%;
     }
-  }
-  .heading {
-    color: $contrast-color;
   }
   @include m(full) {
     @include clip(small);

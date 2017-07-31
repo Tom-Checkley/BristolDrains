@@ -1,0 +1,51 @@
+.services {
+  height: 100%;
+  flex-direction: column;
+  @include mq(medium) {
+    @include flex($direction: row, $align: stretch);
+    flex-wrap: wrap;
+  }
+  @include e(service) {
+    height: 15rem;
+    .heading {
+      color: $white;
+    }
+    .btn {
+      align-self: flex-start;
+    }
+    @include mq(medium) {
+      width: 50%;
+      height: auto;
+    }
+    @include mq(large) {
+      width: 33.33%;
+    }
+    @include mq(x-large) {
+      height: 17rem;
+    }
+  }
+  .service {
+    @include e(info) {
+      height: 100%;
+      @include flex($direction: column, $justify: between);
+    }
+  }
+  .clearance {
+    @include bg('pressure.png');
+  }
+  .cctv {
+    @include bg('cctv.jpg');
+  }
+  .repairs {
+    @include bg('repairs.jpg');
+  }
+  .installation {
+    @include bg('installation.jpg');
+  }
+  .tanker {
+    @include bg('tanker.jpg');
+  }
+  .contact {
+    padding: 1.5rem;
+  }
+}
