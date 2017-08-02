@@ -1,0 +1,17 @@
+.testimonials {
+  .form {
+    position: absolute;
+    height: 100%;
+    width: 66.66%;
+    left: -100%;
+  }
+  .feedback__close {
+    float: right;
+    font-size: 2rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    &:hover {
+      color: $contrast-color;
+    }
+  }
+}

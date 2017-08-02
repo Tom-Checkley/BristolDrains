@@ -1,0 +1,33 @@
+<div class="page testimonials">
+  <form [@slideInOut]="feedbackState" action="" class="testimonial form skewed__container">
+    <div class="skewed skewed--full bg">
+      <div class="skewed__content">
+        <button class="feedback__close" (click)="toggleMenu()"><i>&#10006;</i></button>
+        <h1 class="heading">Leave Feedback</h1>
+        <div class="form__input">
+          <label class="srt" for="name">Name</label>
+          <input ty class="form__text-input" pe="text" id="name" placeholder="Name">
+        </div>
+        <div class="form__input">
+          <label class="srt" for="location">Location</label>
+          <input ty class="form__text-input" pe="text" id="location" placeholder="Location">
+        </div>
+        <div class="form__input">
+          <label class="srt" for="testimonial-body">Let us know how we've done</label>
+          <textarea class="form__text-input" rows="10" cols="25" id="testimonial-body" placeholder="Let us know how we've done"></textarea>
+        </div>
+        <div class="form__input">
+          <input class="btn btn--regular" type="submit" value="Leave Feedback">
+        </div>
+      </div>
+    </div>
+  </form>
+  <main class="with-aside page--no-skew">
+
+    <header>
+      <h1>Testimonials</h1>
+      <button (click)="toggleMenu()" class="btn btn--regular">Leave Feedback</button>
+    </header>
+  </main>
+  <app-policies class="aside"></app-policies>
+</div>

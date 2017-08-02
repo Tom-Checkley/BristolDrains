@@ -20,6 +20,7 @@ import { RepairsComponent } from './components/repairs/repairs.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { TipsComponent } from './components/tips/tips.component';
 import { LocationsComponent } from './components/locations/locations.component';
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 
 
 const appRoutes: Routes = [
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
   { path: 'contact', component: ContactComponent},
   { path: 'tips', component: TipsComponent},
   { path: 'locations', component: LocationsComponent},
+  { path: 'testimonials', component: TestimonialsComponent},
 ];
 
 @NgModule({
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
     RepairsComponent,
     ContactComponent,
     TipsComponent,
-    LocationsComponent
+    LocationsComponent,
+    TestimonialsComponent
   ],
   imports: [
     BrowserModule,
