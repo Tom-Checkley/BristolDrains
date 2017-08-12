@@ -24,10 +24,24 @@
   </form>
   <main class="with-aside page--no-skew">
 
-    <header>
-      <h1>Testimonials</h1>
-      <button (click)="toggleMenu()" class="btn btn--regular">Leave Feedback</button>
-    </header>
+    <div class="skewed__content">
+      <header class="bg bg--opaque skewed skewed--full">
+        <div class="skewed__content">
+          <h1>Testimonials</h1>
+          <button (click)="toggleMenu()" class="btn btn--regular">Leave Feedback</button>
+        </div>
+      </header>
+    </div>
+    <div class="testimonial skewed__container" *ngFor="let testimonial of testimonials">
+      <blockquote class="bg bg--opaque skewed--full">
+        <div class="skewed__content">
+          <p class="testimonial__body">{{testimonial.body}}</p>
+          <p class="testimonial__location">{{testimonial.location}}</p>
+          <cite class="testimonial.author">{{testimonial.author}}</cite>
+        </div>
+      </blockquote>
+      <br>
+    </div>
   </main>
   <app-policies class="aside"></app-policies>
 </div>
