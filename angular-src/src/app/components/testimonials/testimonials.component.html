@@ -22,23 +22,20 @@
       </div>
     </div>
   </form>
-  <main class="with-aside page--no-skew">
+  <main class="with-aside bg bg--opaque page--no-skew">
 
-    <div class="skewed__content">
-      <header class="bg bg--opaque skewed skewed--full">
-        <div class="skewed__content">
-          <h1>Testimonials</h1>
-          <button (click)="toggleMenu()" class="btn btn--regular">Leave Feedback</button>
-        </div>
-      </header>
-    </div>
-    <div class="testimonial skewed__container" *ngFor="let testimonial of testimonials">
-      <blockquote class="bg bg--opaque skewed--full">
-        <div class="skewed__content">
-          <p class="testimonial__body">{{testimonial.body}}</p>
-          <p class="testimonial__location">{{testimonial.location}}</p>
-          <cite class="testimonial.author">{{testimonial.author}}</cite>
-        </div>
+
+    <header>
+      <h1 class="heading">Testimonials</h1>
+      <button (click)="toggleMenu()" class="btn btn--regular">Leave Feedback</button>
+    </header>
+
+    <div class="testimonial" *ngFor="let testimonial of testimonials">
+      <blockquote>
+        <p class="testimonial__body"><span class="quote quote--open">&#8220;</span>{{testimonial.body}}<span class="quote quote--close">&#8221;</span></p>
+        <cite class="testimonial.author">{{testimonial.author}}</cite>
+        <p class="testimonial__location">{{testimonial.location}}</p>
+        <hr>
       </blockquote>
       <br>
     </div>

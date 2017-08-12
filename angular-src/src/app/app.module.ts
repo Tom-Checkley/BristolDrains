@@ -22,6 +22,9 @@ import { TipsComponent } from './components/tips/tips.component';
 import { LocationsComponent } from './components/locations/locations.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 
+import { TestimonialService } from './services/testimonial.service';
+
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -64,7 +67,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    TestimonialService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

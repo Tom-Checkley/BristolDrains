@@ -1,29 +1,11 @@
 import { Component, OnInit, trigger, state, style, transition, animate, Injectable } from '@angular/core';
 import { Router } from "@angular/router";
+// import {  } from "@angular/forms";
 
 import { Testimonial } from './testimonial';
-// import { TestimonialService } from "../../services/testimonial.service";
+import { TestimonialService } from "../../services/testimonial.service";
 
-  const TESTIMONIALS: Testimonial[]  = [
-    {
-      body: "Great work",
-      location: "Bristol",
-      author: "Tom",
-      verified: false
-    },
-    {
-      body: "Great clearance",
-      location: "Brislington",
-      author: "Bill",
-      verified: false
-    },
-    {
-      body: "Fast",
-      location: "Keynesham",
-      author: "Tom",
-      verified: false
-    },
-  ];
+  
 
 @Component({
   selector: 'app-testimonials',
@@ -45,29 +27,27 @@ import { Testimonial } from './testimonial';
   ]
 })
 
-
-
-
 export class TestimonialsComponent implements OnInit {
   
-  testimonials = TESTIMONIALS;
+  testimonials: Testimonial[];
 
   feedbackState = 'out';
 
   constructor(
-    // private testimonialService: TestimonialService
+    private testimonialService: TestimonialService
   ) {  }
 
   ngOnInit() {
-    // this.getTestimonials();
+    this.getTestimonials();
   }
 
   toggleMenu() {
     this.feedbackState = this.feedbackState === 'out' ? 'in' : 'out';
   }
 
-  // getTestimonials(): void {
-  //   this.testimonialService.getTestimonials();
-  // }
+  getTestimonials(): void {
+    this.testimonialService.getTestimonials()
+        .then(testimonials => this.testimonials = testimonials);
+  }
 
 }

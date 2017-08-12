@@ -16,4 +16,23 @@
       color: $contrast-color;
     }
   }
+  header {
+    padding-left: 40px;
+    padding-bottom: 2rem;
+  }
+  .testimonial {
+    color: $white;
+    .quote {
+      font-size: 4rem;
+      padding: .2rem;
+      @include m(open) {
+        float: left;
+        margin: -1rem .5rem 0 0;
+      }
+      @include m(close) {
+        float: right;
+        margin: -.5rem 0 0 .5rem;
+      }
+    }
+  }
 }
