@@ -1,0 +1,19 @@
+.login {
+  @include flex($direction: column, $justify: center, $align: center);
+  text-align: center;
+  @include e(form) {
+    &>* {
+      margin: 1rem auto;
+      display: block;
+    }
+  }
+  .form__text-input {
+    width: 70%;
+    @include mq(large) {
+      width: 50%;
+    }
+    @include mq(x-large) {
+      width: 30%;
+    }
+  }
+}

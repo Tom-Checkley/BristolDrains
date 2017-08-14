@@ -1,0 +1,37 @@
+<main class="page" style="color:black">
+  <section class="blog-input">
+    <nav>
+      <ul>
+        <li><a href="">Blog Entry</a></li>
+        <li><a href="">Accept Feedback</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h1>Enter new blog post</h1>
+      <form action="" class="form">
+        <input class="btn btn--regular" type="file" name="file" value="Choose Photo">
+        <input type="text" name="location" class="form__text-input" placeholder="Where was this taken?">
+        <input class="btn btn--regular" type="submit" value="Post">
+      </form>
+    </div>
+    <div>
+      <h1>Accept Feedback Posts</h1>
+      <p>You have <span>'enter number of posts to accept'</span> feedback requests to be verified.</p>
+      <ul class="verify">
+        <li *ngFor="let testimonial of testimonials">
+          <div>
+            <h2>Posted by: {{ testimonial.author }}</h2>
+          </div>
+          <div>
+            <h3>Post</h3>
+            <p>
+              {{ testimonial.body }}
+            </p>
+          </div>
+          <button class="btn btn--accept" type="button">Accept</button>
+          <button class="btn btn--decline" type="button">Decline</button>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>

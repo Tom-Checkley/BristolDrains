@@ -39,6 +39,20 @@
       color: $contrast-color;
     }
   }
+  @include m(accept) {
+    background-color: green;
+    color: white;
+    &:hover {
+      background-color: lighten(green, 10%);
+    }
+  }
+  @include m(decline) {
+    background-color: red;
+    color: white;
+    &:hover {
+      background-color: darken(red, 10%);
+    }
+  }
   @include m(no-border) {
     border: none;
     padding: 0;

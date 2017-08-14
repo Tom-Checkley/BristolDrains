@@ -23,11 +23,14 @@ import { LocationsComponent } from './components/locations/locations.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 
 import { TestimonialService } from './services/testimonial.service';
+import { AdminComponent } from './components/admin/admin.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'about', component: AboutComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'services/clearance', component: ClearanceComponent},
@@ -39,6 +42,7 @@ const appRoutes: Routes = [
   { path: 'tips', component: TipsComponent},
   { path: 'locations', component: LocationsComponent},
   { path: 'testimonials', component: TestimonialsComponent},
+  { path: 'login', component: LoginComponent},
 ];
 
 @NgModule({
@@ -58,7 +62,9 @@ const appRoutes: Routes = [
     ContactComponent,
     TipsComponent,
     LocationsComponent,
-    TestimonialsComponent
+    TestimonialsComponent,
+    AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
