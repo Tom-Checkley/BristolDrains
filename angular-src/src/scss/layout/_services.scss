@@ -20,9 +20,9 @@
     @include mq(large) {
       width: 33.33%;
     }
-    @include mq(x-large) {
-      height: 17rem;
-    }
+    // @include mq(x-large) {
+    //   height: 17rem;
+    // }
   }
   .service {
     @include e(info) {

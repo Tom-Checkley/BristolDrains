@@ -1,0 +1,15 @@
+.contact {
+  @include bg('repairs.jpg');
+  &>div {
+    height: 100%;
+    align-self: center;
+  }
+  .form {
+    @include mq(large) {
+      width: 70%;
+    }
+    @include mq(x-large) {
+      width: 50%;
+    }
+  }
+}
