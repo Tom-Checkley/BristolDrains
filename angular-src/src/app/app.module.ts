@@ -21,10 +21,13 @@ import { ContactComponent } from './components/contact/contact.component';
 import { TipsComponent } from './components/tips/tips.component';
 import { LocationsComponent } from './components/locations/locations.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
-
-import { TestimonialService } from './services/testimonial.service';
 import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
+import { BlogComponent } from './components/blog/blog.component';
+
+import { TestimonialService } from './services/testimonial.service';
+import { BlogService } from './services/blog.service';
+
 
 
 
@@ -32,6 +35,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'blog', component: BlogComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'services/clearance', component: ClearanceComponent},
   { path: 'services/cctv', component: CctvComponent},
@@ -64,7 +68,8 @@ const appRoutes: Routes = [
     LocationsComponent,
     TestimonialsComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +79,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
   ],
   providers: [
-    TestimonialService
+    TestimonialService,
+    BlogService,
   ],
   bootstrap: [AppComponent]
 })
