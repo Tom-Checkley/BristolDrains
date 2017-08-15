@@ -24,6 +24,7 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
 import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { RegisterComponent } from './components/register/register.component';
 
 import { TestimonialService } from './services/testimonial.service';
 import { BlogService } from './services/blog.service';
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
   { path: 'locations', component: LocationsComponent},
   { path: 'testimonials', component: TestimonialsComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
 ];
 
 @NgModule({
@@ -69,7 +71,8 @@ const appRoutes: Routes = [
     TestimonialsComponent,
     AdminComponent,
     LoginComponent,
-    BlogComponent
+    BlogComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
