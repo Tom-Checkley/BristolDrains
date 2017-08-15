@@ -17,7 +17,6 @@ mongoose.connection.on('error', (err) => {
   console.log('Database error: ' + err);
 });
 
-
 const app = express();
 
 const users = require('./routes/users');
@@ -32,9 +31,12 @@ app.use(bodyParser.json());
 
 app.use('/users', users);
 
-////////////////////////////////////
-//  Passport Middleware required
-////////////////////////////////////
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
+
+app.use('/users', users);
 
 app.get('/', (req, res) => {
   res.send('Invalid End Point');
