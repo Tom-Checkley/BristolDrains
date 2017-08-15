@@ -1,0 +1,28 @@
+.admin {
+  padding: 1.5rem;
+  @include bg('pressure.png');
+  background-attachment: fixed;
+  text-align: center;
+  p {
+    color: $white;
+  }
+  .blog-entry {
+    width: 90%;
+    margin: auto;
+    @include flex($direction: column, $justify: center, $align: center);
+    @include mq(medium) {
+      width: 70%;
+    }
+  }
+  .accept-feedback {
+    width: 90%;
+    margin: auto;
+    @include mq(medium) {
+      width: 70%;
+    }
+    p {
+      font-family: $text;
+      font-size: 1.2rem;
+    }
+  }
+}

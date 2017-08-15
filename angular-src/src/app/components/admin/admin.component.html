@@ -1,37 +1,58 @@
-<main class="page" style="color:black">
-  <section class="blog-input">
+<main class="page admin">
+  <div class="tabbed">
     <nav>
-      <ul>
-        <li><a href="">Blog Entry</a></li>
-        <li><a href="">Accept Feedback</a></li>
-      </ul>
-    </nav>
-    <div>
-      <h1>Enter new blog post</h1>
-      <form action="" class="form">
-        <input class="btn btn--regular" type="file" name="file" value="Choose Photo">
-        <input type="text" name="location" class="form__text-input" placeholder="Where was this taken?">
-        <input class="btn btn--regular" type="submit" value="Post">
-      </form>
-    </div>
-    <div>
-      <h1>Accept Feedback Posts</h1>
-      <p>You have <span>'enter number of posts to accept'</span> feedback requests to be verified.</p>
-      <ul class="verify">
-        <li *ngFor="let testimonial of testimonials">
-          <div>
-            <h2>Posted by: {{ testimonial.author }}</h2>
-          </div>
-          <div>
-            <h3>Post</h3>
-            <p>
-              {{ testimonial.body }}
-            </p>
-          </div>
-          <button class="btn btn--accept" type="button">Accept</button>
-          <button class="btn btn--decline" type="button">Decline</button>
+      <ul class="tabbed__tabs">
+        <li [class.active]="blogActive">
+          <a (click)="blogActive = !blogActive">Blog Entry</a>
+        </li>
+        <li [class.active]="!blogActive">
+          <a (click)="blogActive = !blogActive">Accept Feedback</a>
         </li>
       </ul>
+    </nav>
+
+    <div class="tabbed__panel-w  bg bg--opaque">
+      <section [class.active]="blogActive" class="tabbed__panel">
+        <div class="blog-entry">
+          <h1>Enter new blog post</h1>
+          <form action="" class="form">
+            <div class="form__input">
+              <label for="file" class="btn btn--regular">Choose a photo</label>
+              <input class="srt" id="file" type="file" name="file" value="Choose Photo">
+            </div>
+            <div class="form__input">
+              <label for="description" class="srt">Enter a brief description of the job</label>
+              <textarea name="descriptinon" id="description" cols="30" rows="6" class="description form__text-input" placeholder="Enter a brief description of the job"></textarea>
+            </div>
+            <div class="form__input">
+              <input type="text" name="location" class="form__text-input" placeholder="Where was this taken?">
+            </div>
+            <input class="btn btn--regular" type="submit" value="Post">
+          </form>
+        </div>
+      </section>
+
+      <section [class.active]="!blogActive" class="tabbed__panel">
+        <div class="accept-feedback">
+          <h1>Accept Feedback Posts</h1>
+          <p>You have <span>'enter number of posts to accept'</span> feedback requests to be verified.</p>
+          <ul class="verify">
+            <li *ngFor="let testimonial of testimonials">
+              <div>
+                <h2>Posted by: {{ testimonial.author }}</h2>
+              </div>
+              <div>
+                <h3>Post</h3>
+                <p>
+                  {{ testimonial.body }}
+                </p>
+              </div>
+              <button class="btn btn--accept" type="button">Accept</button>
+              <button class="btn btn--decline" type="button">Decline</button>
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
-  </section>
+  </div>
 </main>

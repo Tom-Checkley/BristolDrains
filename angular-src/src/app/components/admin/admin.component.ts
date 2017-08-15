@@ -12,6 +12,8 @@ export class AdminComponent implements OnInit {
 
   testimonials: Testimonial[];
 
+  blogActive = true;
+
   constructor(
     private testimonialService: TestimonialService
   ) { }
