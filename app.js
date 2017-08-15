@@ -30,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 
+app.use('/users', users);
+
 ////////////////////////////////////
 //  Passport Middleware required
 ////////////////////////////////////
