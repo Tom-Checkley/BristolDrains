@@ -7,7 +7,7 @@ const express = require('express'),
   config = require('./config/database'),
   fs = require('fs');
 
-mongoose.connect(config.database);
+mongoose.connect(config.database, { useMongoClient: true });
 
 mongoose.connection.on('connected', () => {
   console.log('Connected to database ' + config.database);

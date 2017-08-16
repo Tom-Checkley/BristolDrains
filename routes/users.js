@@ -26,12 +26,42 @@ router.post('/register', (req, res, next) => {
 
 // Authenticate
 router.get('/authenticate', (req, res, next) => {
-  res.send('Authenticate');
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User.getUserByUserName(username, (err, user) => {
+    if (err) throw err;
+    if (!user) {
+      return res.json({ success: false, msg: 'User not found' });
+    }
+    User.comparePassword(password, user.password, (err, isMatch) => {
+      if (err) throw err;
+      if (isMatch) {
+        const token = jwt.sign(user, config.secret, {
+          expiresIn: 604800 //one week in seconds
+        });
+
+        res.json({
+          success: true,
+          token: 'JWT ' + token,
+          // create new user object without password
+          user: {
+            id: user._id,
+            name: user.name,
+            username: user.username,
+            email: user.email
+          }
+        });
+      } else {
+        return res.json({ success: false, msg: 'Wrong password.' });
+      }
+    });
+  });
 });
 
 // admin
-router.get('/admin', (req, res, next) => {
-  res.send('Admin');
+router.get('/admin', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+  res.json({ user: req.user });
 });
 
 // Validate
