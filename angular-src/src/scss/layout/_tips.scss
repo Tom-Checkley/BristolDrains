@@ -1,0 +1,13 @@
+.tips {
+  @include bg('drain.jpg');
+  background-attachment: fixed;
+  ul {
+    font-size: 1.2rem;
+    font-family: $text;
+    list-style: outside;
+    margin-left: 1rem;
+    li {
+      margin: .5rem 0;
+    }
+  }
+}
