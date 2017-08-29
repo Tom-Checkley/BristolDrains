@@ -3,70 +3,33 @@ const express = require('express'),
   passport = require('passport'),
   jwt = require('jsonwebtoken'),
   config = require('../config/database'),
-  multer = require('multer');
+  multer = require('multer'),
+  User = require('../models/user');
 
-const User = require('../models/user');
-
-// Register
 router.post('/register', (req, res, next) => {
   let newUser = new User({
     name: req.body.name,
-    email: req.body.email,
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    code: req.body.code
   });
   User.addUser(newUser, (err, user) => {
     if (err) {
-      res.json({ success: false, msg: 'Failed to register user' });
+      res.json({ success: false, msg: 'Failed to register new user' });
     } else {
-      res.json({ success: true, msg: 'User registered' });
+      res.json({ success: true, msg: 'New user registered' });
     }
   });
 });
 
-// Authenticate
 router.get('/authenticate', (req, res, next) => {
-  const username = req.body.username;
-  const password = req.body.password;
-
-  User.getUserByUserName(username, (err, user) => {
-    if (err) throw err;
-    if (!user) {
-      return res.json({ success: false, msg: 'User not found' });
-    }
-    User.comparePassword(password, user.password, (err, isMatch) => {
-      if (err) throw err;
-      if (isMatch) {
-        const token = jwt.sign(user, config.secret, {
-          expiresIn: 604800 //one week in seconds
-        });
-
-        res.json({
-          success: true,
-          token: 'JWT ' + token,
-          // create new user object without password
-          user: {
-            id: user._id,
-            name: user.name,
-            username: user.username,
-            email: user.email
-          }
-        });
-      } else {
-        return res.json({ success: false, msg: 'Wrong password.' });
-      }
-    });
-  });
+  res.send('authenticate');
 });
 
-// admin
-router.get('/admin', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-  res.json({ user: req.user });
+router.get('/admin', (req, res, next) => {
+  res.send('admin');
 });
 
-// Validate
-router.get('/validate', (req, res, next) => {
-  res.send('Validate');
-});
+
 
 module.exports = router;
