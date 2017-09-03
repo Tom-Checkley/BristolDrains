@@ -1,0 +1,18 @@
+.flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  z-index: 2000;
+  @include m(success) {
+    background-color: lighten(#0ad121, 10%);
+    color: darken(#0ad121, 20%);
+    border: darken(#0ad121, 20%) 2px solid;
+  }
+  @include m(warn) {
+    background-color: #fca4a4;
+    color: darken(#fc8383, 25%);
+    border: darken(#fc8383, 25%) 2px solid;
+  }
+}

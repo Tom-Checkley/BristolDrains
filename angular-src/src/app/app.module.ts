@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { FlashMessagesModule } from "angular2-flash-messages";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -28,6 +29,8 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { TestimonialService } from './services/testimonial.service';
 import { BlogService } from './services/blog.service';
+import { ValidateService } from "./services/validate.service";
+import { AuthService } from "./services/auth.service";
 
 
 
@@ -72,7 +75,7 @@ const appRoutes: Routes = [
     AdminComponent,
     LoginComponent,
     BlogComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,10 +83,13 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
+    FlashMessagesModule,
   ],
   providers: [
     TestimonialService,
     BlogService,
+    ValidateService,
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })
