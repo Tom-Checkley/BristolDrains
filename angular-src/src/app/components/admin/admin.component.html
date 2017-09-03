@@ -1,4 +1,8 @@
-<main class="page admin">
+<main *ngIf="user" class="page admin">
+  <div class="bg bg--contrast admin__loggedin">
+    <p>Logged in as: {{user.name}}</p>
+    <a class="admin__logout" role="button" class="btn btn--inverted" (click)="onLogoutClick()">Log Out</a>
+  </div>
   <div class="tabbed">
     <nav>
       <ul class="tabbed__tabs">
@@ -54,5 +58,5 @@
         </div>
       </section>
     </div>
-  </div>
+  </div>>
 </main>

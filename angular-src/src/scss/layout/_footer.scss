@@ -38,3 +38,15 @@ footer {
     @include flex($justify: between, $align: center);
   }
 }
+
+.footer__info {
+  a {
+    font-size: 1rem;
+    font-family: $text;
+    display: inline-block;
+  }
+  padding: .5rem 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

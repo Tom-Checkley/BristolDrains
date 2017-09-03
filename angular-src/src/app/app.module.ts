@@ -31,13 +31,14 @@ import { TestimonialService } from './services/testimonial.service';
 import { BlogService } from './services/blog.service';
 import { ValidateService } from "./services/validate.service";
 import { AuthService } from "./services/auth.service";
+import { AuthGuard } from "./guards/auth.guard";
 
 
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate:[AuthGuard] },
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'services', component: ServicesComponent },
@@ -90,6 +91,7 @@ const appRoutes: Routes = [
     BlogService,
     ValidateService,
     AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

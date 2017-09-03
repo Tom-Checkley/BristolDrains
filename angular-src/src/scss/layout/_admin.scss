@@ -3,8 +3,22 @@
   @include bg('pressure.png');
   background-attachment: fixed;
   text-align: center;
+  flex-direction: column;
   p {
     color: $white;
+  }
+  @include e(loggedin) {
+    padding: .75rem;
+    border-radius: .5rem;
+    margin: 0 auto 1rem;
+    width: 100%;
+    max-width: 900px;
+    p {
+      color: $bg-color;
+    }
+    @include mq(medium) {
+      @include flex($align: center, $justify: between);
+    }
   }
   .blog-entry {
     width: 90%;

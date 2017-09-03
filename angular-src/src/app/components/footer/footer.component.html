@@ -36,4 +36,10 @@
       </li>
     </ul>
   </nav>
+
 </footer>
+<div class="footer__info">
+  <a href="http://www.tomcheckley.co.uk">Site created by Tom Checkley Web Development</a>
+  <a *ngIf="!authService.loggedIn()" [routerLink]="['/login']">Admin Login</a>
+  <a *ngIf="authService.loggedIn()" [routerLink]="['/admin']">Admin</a>
+</div>
