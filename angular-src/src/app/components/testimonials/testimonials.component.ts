@@ -2,6 +2,8 @@ import { Component, OnInit, trigger, state, style, transition, animate, Injectab
 import { Router } from "@angular/router";
 // import {  } from "@angular/forms";
 
+import 'rxjs/add/operator/map';
+
 import { Testimonial } from './testimonial';
 import { TestimonialService } from "../../services/testimonial.service";
 
@@ -46,8 +48,8 @@ export class TestimonialsComponent implements OnInit {
   }
 
   getTestimonials(): void {
-    this.testimonialService.getTestimonials()
-        .then(testimonials => this.testimonials = testimonials);
+    this.testimonialService.verifiedTestimonials()
+        .subscribe(testimonials => this.testimonials = testimonials);
   }
 
 }

@@ -4,7 +4,9 @@ const express = require('express'),
   jwt = require('jsonwebtoken'),
   config = require('../config/database'),
   multer = require('multer'),
-  User = require('../models/user');
+  User = require('../models/user'),
+  Testimonials = require('../models/testimonials');
+
 
 router.post('/register', (req, res, next) => {
   let newUser = new User({
@@ -55,6 +57,73 @@ router.post('/authenticate', (req, res, next) => {
 
 router.get('/admin', passport.authenticate('jwt', { session: false }), (req, res, next) => {
   res.json({ user: req.user });
+});
+
+
+router.post('/testimonials', (req, res, next) => {
+  let today = new Date(),
+    dd = today.getDate(),
+    mm = today.getMonth() + 1,
+    yyyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+  if (mm == 1) {
+    mm = 'January';
+  } else if (mm == 2) {
+    mm = 'Febuary';
+  } else if (mm == 3) {
+    mm = 'March';
+  } else if (mm == 4) {
+    mm = 'April';
+  } else if (mm == 5) {
+    mm = 'May';
+  } else if (mm == 6) {
+    mm = 'June';
+  } else if (mm == 7) {
+    mm = 'July';
+  } else if (mm == 8) {
+    mm = 'August';
+  } else if (mm == 9) {
+    mm = 'September';
+  } else if (mm == 10) {
+    mm = 'October';
+  } else if (mm == 11) {
+    mm = 'Novemeber';
+  } else if (mm == 12) {
+    mm = 'December';
+  }
+  today = dd + ' ' + mm + ' ' + yyyyy;
+  let newTestimonial = new Testimonials({
+    name: req.body.name,
+    location: req.body.location,
+    message: req.body.message,
+    verified: false,
+    date: today
+  });
+  Testimonials.addTestiomonial(newTestimonial, (err, testimonial) => {
+    if (err) {
+      res.json({ success: false, msg: 'Failed to upload testimonial' });
+    } else {
+      res.json({ success: true, msg: 'Successfully added testimonial' });
+    }
+  });
+});
+
+router.get('/verifiedTestimonials', (req, res) => {
+  Testimonials.find({ verified: true }, (err, testimonial) => {
+    if (err) throw err;
+    res.json({ testimonial: testimonial });
+
+  }).sort({ '_id': -1 });
+});
+
+router.get('/unverifiedTestimonials', (req, res, next) => {
+  Testimonials.find({ verified: false }, (err, testimonial) => {
+    if (err) throw err;
+    res.json({ testimonial: testimonial });
+
+  }).sort({ '_id': -1 });
 });
 
 

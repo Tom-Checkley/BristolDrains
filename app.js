@@ -22,6 +22,7 @@ mongoose.connection.on('error', (err) => {
 
 const app = express()
 const users = require('./routes/users');
+
 const port = 3000;
 
 // Bring in cors

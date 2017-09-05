@@ -4,6 +4,8 @@ import { FlashMessagesService } from "angular2-flash-messages";
 
 import { Testimonial } from '../testimonials/testimonial';
 
+import 'rxjs/add/operator/map';
+
 import { TestimonialService } from "../../services/testimonial.service";
 import { AuthService } from "../../services/auth.service";
 
@@ -38,9 +40,9 @@ export class AdminComponent implements OnInit {
     this.getTestimonials();
   }
 
-  getTestimonials(): void {
-    this.testimonialService.getTestimonials()
-        .then(testimonials => this.testimonials = testimonials);
+  getTestimonials() {
+    this.testimonialService.unverifiedTestimonials()
+        .subscribe(testimonials => this.testimonials = testimonials);
   }
 
   onLogoutClick() {
