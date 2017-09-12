@@ -1,12 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
-import { FlashMessagesModule } from "angular2-flash-messages";
-
-import { AppRoutingModule } from "./app.routing-module";
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -29,56 +22,37 @@ import { LoginComponent } from './components/login/login.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { RegisterComponent } from './components/register/register.component';
 
-import { TestimonialService } from './services/testimonial.service';
-import { BlogService } from './services/blog.service';
-import { ValidateService } from "./services/validate.service";
-import { AuthService } from "./services/auth.service";
 import { AuthGuard } from "./guards/auth.guard";
 
-
-
-
-
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'admin', component: AdminComponent, canActivate:[AuthGuard] },
+  { path: 'about', component: AboutComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'services', component: ServicesComponent },
+  { path: 'services/clearance', component: ClearanceComponent},
+  { path: 'services/cctv', component: CctvComponent},
+  { path: 'services/installation', component: InstallationComponent},
+  { path: 'services/tanker', component: TankerComponent},
+  { path: 'services/repairs', component: RepairsComponent},
+  { path: 'contact', component: ContactComponent},
+  { path: 'tips', component: TipsComponent},
+  { path: 'locations', component: LocationsComponent},
+  { path: 'testimonials', component: TestimonialsComponent},
+  { path: 'login', component: LoginComponent},
+	{ path: 'register', component: RegisterComponent},
+	{ path: '**', component: HomeComponent},
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    PoliciesComponent,
-    AboutComponent,
-    ServicesComponent,
-    CctvComponent,
-    TankerComponent,
-    ClearanceComponent,
-    InstallationComponent,
-    RepairsComponent,
-    ContactComponent,
-    TipsComponent,
-    LocationsComponent,
-    TestimonialsComponent,
-    AdminComponent,
-    LoginComponent,
-    BlogComponent,
-    RegisterComponent,
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    // RouterModule.forRoot(appRoutes),
-    BrowserAnimationsModule,
-    FlashMessagesModule,
-  ],
-  providers: [
-    TestimonialService,
-    BlogService,
-    ValidateService,
-    AuthService,
-    AuthGuard
-  ],
-  bootstrap: [AppComponent]
+	declarations: [],
+	imports: [
+		RouterModule.forRoot(appRoutes),
+	],
+	providers: [],
+	bootstrap: [],
+	exports: [
+		RouterModule
+	]
 })
-export class AppModule { }
+export class AppRoutingModule {}
