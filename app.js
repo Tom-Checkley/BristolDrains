@@ -1,57 +1,48 @@
-const express = require('express'),
-  path = require('path'),
-  bodyParser = require('body-parser'),
-  cors = require('cors'),
-  passport = require('passport'),
-  mongoose = require('mongoose'),
-  config = require('./config/database'),
-  fs = require('fs');
+const express = require('express');
+const app = express();
+const router = express.Router();
+const mongoose = require('mongoose');
+const config = require('./config/database');
+const path = require('path');
+const authentication = require('./routes/authentication')(router);
+const bodyParser = require('body-parser');
 
-// Connect to database
-mongoose.connect(config.database, { useMongoClient: true });
-
-// On connection
-mongoose.connection.on('connected', () => {
-  console.log('Connected to database ' + config.database);
+// Databasee Connection
+mongoose.Promise = global.Promise;
+mongoose.connect(config.uri, (err) => {
+  if (err) {
+    console.log('Could NOT connect to database: ' + err);
+  } else {
+    console.log('Connected to database: ' + config.db);
+  }
 });
 
-// On connection error
-mongoose.connection.on('error', (err) => {
-  console.log('Database error: ' + err);
-});
+// Set Application Port Number
+const port = 8080;
 
-const app = express()
-const users = require('./routes/users');
+// 
+// MIDDLEWARE
+///////////////////////////////////////////////////
 
-const port = 3000;
+// parse application/x-www-form-urlencoded 
+app.use(bodyParser.urlencoded({ extended: false }))
+  // parse application/json 
+app.use(bodyParser.json())
+  // Set static directory for frontend
+app.use(express.static(__dirname + '/dist/public'));
 
-// Bring in cors
-app.use(cors());
+// Pull in authentication routes
+app.use('/authentication', authentication);
 
-// Static directory
-app.use(express.static(path.join(__dirname, 'public')));
 
-// Bodyparser
-app.use(bodyParser.json());
 
-// Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
-
-require('./config/passport')(passport);
-
-app.use('/users/', users);
-
-// Index route
-app.get('/', (req, res) => {
-  res.send('Invalid End Point');
-});
-
+// 
+// SET BASE ROUTE
+///////////////////////////////////////////////////
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.sendFile(path.join(__dirname + '/dist/public/index.html'));
 });
 
-// Start server
 app.listen(port, () => {
-  console.log('Server started on port ' + port);
+  console.log('App listening on port ' + port);
 });

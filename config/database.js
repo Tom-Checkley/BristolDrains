@@ -1,4 +1,7 @@
+const crypto = require('crypto').randomBytes(256).toString('hex');
+
 module.exports = {
-  database: 'mongodb://localhost:27017/drains',
-  secret: 'drains'
+  uri: 'mongodb://localhost:27017/drains',
+  secret: crypto,
+  db: 'drains'
 };
