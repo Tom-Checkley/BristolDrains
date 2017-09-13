@@ -1,26 +1,69 @@
 <div class="page bg">
-  <form class="form" (submit)="onRegisterSubmit()">
+  <form class="form" [formGroup]="form" (submit)="onRegisterSubmit()">
     <h1 class="heading">Register</h1>
+
+    <!-- Custom Success/Error Message -->
+    <!-- <div class="row show-hide-message">
+      <div [ngClass]="messageClass">
+        {{ message }}
+      </div>
+    </div> -->
+
     <div class="form__input">
       <label for="name" class="srt">Name</label>
-      <input [(ngModel)]="name" class="form__text-input" type="text" name="name" id="name" placeholder="Name">
+      <div [ngClass]="{'has-error': (form.controls.name.errors && form.controls.name.dirty),'has-success': !form.controls.name.errors}">
+        <input formControlName="name" class="form__text-input" type="text" name="name" id="name" placeholder="Name">
+        <ul class="help-block">
+          <li *ngIf="form.controls.name.errors?.required && form.controls.name.dirty">This field is required</li>
+        </ul>
+      </div>
     </div>
+
     <div class="form__input">
       <label for="username" class="srt">Name</label>
-      <input [(ngModel)]="username" class="form__text-input" type="text" name="username" id="name" placeholder="Username">
+      <div [ngClass]="{'has-error': (form.controls.username.errors && form.controls.username.dirty) || (!usernameValid && form.controls.username.dirty), 'has-success': !form.controls.username.errors && usernameValid}">
+        <input formControlName="username" class="form__text-input" type="text" name="username" id="name" placeholder="Username">
+        <ul class="help-block">
+          <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">This field is required</li>
+          <li *ngIf="form.controls.username.errors?.minlength && form.controls.username.dirty">Minimum characters: 5</li>
+          <li *ngIf="form.controls.username.errors?.validateUsername && form.controls.username.dirty">Username must not have any special characters</li>
+          <li *ngIf="usernameMessage">{{ usernameMessage }}</li>
+        </ul>
+      </div>
     </div>
-    <div class="form__input">
+
+    <!-- <div class="form__input">
       <label for="code" class="srt">Invite Code</label>
-      <input [(ngModel)]="code" class="form__text-input" type="text" name="code" id="code" placeholder="Invite Code">
-    </div>
+      <div>
+        <input formControlName="code" class="form__text-input" type="text" name="code" id="code" placeholder="Invite Code">
+        <ul class="help-block">
+          <li>This field is required</li>
+        </ul>
+      </div>
+    </div> -->
+
     <div class="form__input">
       <label for="password" class="srt">Set Password</label>
-      <input [(ngModel)]="password" class="form__text-input" type="password" name="password" id="password" placeholder="Set Password">
+      <div [ngClass]="{'has-error': (form.controls.password.errors && form.controls.password.dirty), 'has-success': !form.controls.password.errors}">
+        <input formControlName="password" class="form__text-input" type="password" name="password" id="password" placeholder="Set Password">
+        <ul class="help-block">
+          <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required</li>
+          <li *ngIf="form.controls.password.errors?.minlength && form.controls.password.dirty || form.controls.password.errors?.maxlength && form.controls.password.dirty ">Minimum characters: 8</li>
+          <li *ngIf="form.controls.password.errors?.validatePassword && form.controls.password.dirty">Password must have no spaces and contain at least one uppercase letter, one lowercase letter and one number.</li>
+        </ul>
+      </div>
     </div>
+
     <div class="form__input">
       <label for="confirm" class="srt">Confirm Password</label>
-      <input [(ngModel)]="confirm" class="form__text-input" type="password" name="confirm" id="confirm" placeholder="Confirm Password">
+      <div [ngClass]="{'has-error': (form.controls.confirm.errors && form.controls.confirm.dirty) || (form.errors?.matchingPasswords && form.controls.confirm.dirty), 'has-success': !form.controls.confirm.errors && !form.errors?.matchingPasswords}">
+        <input formControlName="confirm" class="form__text-input" type="password" name="confirm" id="confirm" placeholder="Confirm Password">
+        <ul class="help-block">
+          <li *ngIf="form.controls.confirm.errors?.required && form.controls.confirm.dirty">This field is required</li>
+          <li *ngIf="form.errors?.matchingPasswords && form.controls.confirm.dirty">Password do not match</li>
+        </ul>
+      </div>
     </div>
-    <input type="submit" value="Register" class="btn btn--regular">
+    <input [disabled]="!form.valid || !emailValid || !usernameValid" type="submit" value="Register" class="btn btn--regular">
   </form>
 </div>

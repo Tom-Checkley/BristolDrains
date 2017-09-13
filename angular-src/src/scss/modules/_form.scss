@@ -12,4 +12,9 @@
       color: $bg-opaque;
     }
   }
+  input[disabled] {
+    border-color: #ccc;
+    color: #ccc;
+    cursor: not-allowed;
+  }
 }
