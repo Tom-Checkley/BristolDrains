@@ -1,6 +1,6 @@
-<main *ngIf="user" class="page admin">
+<main class="page admin">
   <div class="bg bg--contrast admin__loggedin">
-    <p>Logged in as: {{user.name}}</p>
+    <p>Logged in as: {{name}}</p>
     <a class="admin__logout" role="button" class="btn btn--inverted" (click)="onLogoutClick()">Log Out</a>
   </div>
   <div class="tabbed">
@@ -19,20 +19,20 @@
       <section [class.active]="blogActive" class="tabbed__panel">
         <div class="blog-entry">
           <h1>Enter new blog post</h1>
-          <form action="" class="form">
-            <div class="form__input">
-              <label for="file" class="btn btn--regular">Choose a photo</label>
-              <input class="srt" id="file" type="file" name="file" value="Choose Photo">
-            </div>
-            <div class="form__input">
-              <label for="description" class="srt">Enter a brief description of the job</label>
-              <textarea name="descriptinon" id="description" cols="30" rows="6" class="description form__text-input" placeholder="Enter a brief description of the job"></textarea>
-            </div>
-            <div class="form__input">
-              <input type="text" name="location" class="form__text-input" placeholder="Where was this taken?">
-            </div>
-            <input class="btn btn--regular" type="submit" value="Post">
-          </form>
+          <!-- <form class="form"> -->
+          <div class="form__input">
+            <label for="file" class="btn btn--regular">Choose a photo</label>
+            <input class="srt" id="file" type="file" name="file" value="Choose Photo">
+          </div>
+          <div class="form__input">
+            <label for="description" class="srt">Enter a brief description of the job</label>
+            <textarea name="descriptinon" id="description" cols="30" rows="6" class="description form__text-input" placeholder="Enter a brief description of the job"></textarea>
+          </div>
+          <div class="form__input">
+            <input type="text" name="location" class="form__text-input" placeholder="Where was the job?">
+          </div>
+          <input class="btn btn--regular" type="submit" value="Post">
+          <!-- </form> -->
         </div>
       </section>
 
@@ -41,7 +41,7 @@
           <h1>Accept Feedback Posts</h1>
           <p>You have <span>'enter number of posts to accept'</span> feedback requests to be verified.</p>
           <ul class="verify">
-            <li *ngFor="let testimonial of testimonials">
+            <!-- <li *ngFor="let testimonial of testimonials">
               <div>
                 <h2>Posted by: {{ testimonial.author }}</h2>
               </div>
@@ -53,10 +53,10 @@
               </div>
               <button class="btn btn--accept" type="button">Accept</button>
               <button class="btn btn--decline" type="button">Decline</button>
-            </li>
+            </li> -->
           </ul>
         </div>
       </section>
     </div>
-  </div>>
+  </div>
 </main>
