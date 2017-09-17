@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { FlashMessagesService } from "angular2-flash-messages";
+import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
-import { AuthService } from "../../services/auth.service";
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,31 +12,65 @@ import { AuthService } from "../../services/auth.service";
 })
 export class LoginComponent implements OnInit {
 
-  username: String;
-  password: String;
+  messageClass;
+  message;
+  processing = false;
+  form: FormGroup;
 
   constructor(
+    private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private flashMessage: FlashMessagesService
-  ) { }
+    private flashMessage: FlashMessagesService,
+  ) {
+    this.createForm();
+  }
+
+  createForm() {
+    this.form = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  disableForm() {
+    this.form.controls['username'].disable();
+    this.form.controls['password'].disable();
+  }
+
+  enableForm() {
+    this.form.controls['username'].enable();
+    this.form.controls['password'].enable();
+  }
+
+  onLoginSubmit() {
+    this.processing = true;
+    this.disableForm();
+    const user = {
+      username: this.form.get('username').value,
+      password: this.form.get('password').value
+    };
+
+    this.authService.login(user).subscribe(data => {
+      if(!data.success) {
+        this.messageClass = 'alert alert-danger';
+        this.message = data.message;
+        this.processing = false;
+        this.enableForm();
+      } else {
+        this.messageClass = 'alert alert-success';
+        this. message = data.message;
+        this.authService.storeUserData(data.token, data.user);
+        setTimeout(() => {
+          this.router.navigate(['/admin']);
+        }, 2000);
+      }
+    })
+  }
 
   ngOnInit() {
   }
 
-  onLoginSubmit() {
-    const user = {
-      username: this.username,
-      password: this.password
-    };
-    this.authService.authenticateUser(user).subscribe(data => {
-      if(data.success) {
-        this.authService.storeUserData(data.token, data.user);
-        this.router.navigate(['/admin']);
-      } else {
-        this.flashMessage.show(data.msg, {cssClass: 'flash flash--warn', timeout: 2000} );
-      }
-    });
-  }
+
 
 }

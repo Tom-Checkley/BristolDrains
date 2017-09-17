@@ -1,10 +1,36 @@
-<!-- <div class="page page--no-skew bg login">
+<div class="page page--no-skew bg login">
   <h1 class="heading">Login</h1>
-  <form class="form login__form" (submit)="onLoginSubmit()">
-    <label for="username" class="srt">Username</label>
-    <input [(ngModel)]="username" type="text" name="username" id="username" class="form__text-input" placeholder="Enter Username">
-    <label class="srt" for="password">Password</label>
-    <input [(ngModel)]="password" type="password" name="password" id="password" class="form__text-input" placeholder="Password">
-    <input type="submit" value="Login" class="btn btn--regular">
+
+  <!-- Custom Success/Error Message -->
+  <div class="row show-hide-message">
+    <div [ngClass]="messageClass">
+      {{ message }}
+    </div>
+  </div>
+
+  <form class="form login__form" [formGroup]="form" (submit)="onLoginSubmit()">
+
+    <div class="form__input">
+      <label for="username" class="srt">Username</label>
+      <div [ngClass]="{'has-error': (form.controls.username.errors && form.controls.username.dirty) || (!usernameValid && form.controls.username.dirty), 'has-success': !form.controls.username.errors && usernameValid}">
+
+        <input autocomplete="off" formControlName="username" class="form__text-input" type="text" name="username" id="name" placeholder="Username">
+
+        <ul class="help-block">
+          <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">This field is required</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="form__input">
+      <label for="password" class="srt">Password</label>
+      <div [ngClass]="{'has-error': (form.controls.password.errors && form.controls.password.dirty), 'has-success': !form.controls.password.errors}">
+        <input autocomplete="off" formControlName="password" class="form__text-input" type="password" name="password" id="password" placeholder="Set Password">
+        <ul class="help-block">
+          <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required</li>
+        </ul>
+      </div>
+    </div>
+    <input [disabled]="!form.valid || processing" type="submit" value="Login" class="btn btn--regular" />
   </form>
-</div> -->
+</div>

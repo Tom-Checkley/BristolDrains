@@ -30,29 +30,29 @@ const appRoutes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'services', component: ServicesComponent },
-  { path: 'services/clearance', component: ClearanceComponent},
+  { path: 'services/clearance', component: ClearanceComponent },
   { path: 'services/cctv', component: CctvComponent},
-  { path: 'services/installation', component: InstallationComponent},
-  { path: 'services/tanker', component: TankerComponent},
-  { path: 'services/repairs', component: RepairsComponent},
-  { path: 'contact', component: ContactComponent},
-  { path: 'tips', component: TipsComponent},
-  { path: 'locations', component: LocationsComponent},
-  { path: 'testimonials', component: TestimonialsComponent},
-  { path: 'login', component: LoginComponent},
-	{ path: 'register', component: RegisterComponent},
-	{ path: '**', component: HomeComponent},
+  { path: 'services/installation', component: InstallationComponent },
+  { path: 'services/tanker', component: TankerComponent },
+  { path: 'services/repairs', component: RepairsComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'tips', component: TipsComponent },
+  { path: 'locations', component: LocationsComponent },
+  { path: 'testimonials', component: TestimonialsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
-	declarations: [],
-	imports: [
-		RouterModule.forRoot(appRoutes),
-	],
-	providers: [],
-	bootstrap: [],
-	exports: [
-		RouterModule
-	]
+  declarations: [],
+  imports: [
+    RouterModule.forRoot(appRoutes),
+  ],
+  providers: [],
+  bootstrap: [],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule {}

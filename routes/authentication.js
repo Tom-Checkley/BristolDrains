@@ -1,6 +1,8 @@
 const User = require('../models/user');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+const config = require('../config/database');
 
 mongoose.Promise = global.Promise;
 
@@ -66,6 +68,39 @@ module.exports = (router) => {
             res.json({ success: false, message: 'Username is already taken' }); // Return as taken username
           } else {
             res.json({ success: true, message: 'Username is available' }); // Return as vailable username
+          }
+        }
+      });
+    }
+  });
+
+  router.post('/login', (req, res) => {
+    if (!req.body.username) {
+      res.json({ success: false, message: 'Username not provided' });
+    } else if (!req.body.password) {
+      res.json({ success: false, message: 'Password not provided' });
+    } else {
+      User.findOne({ username: req.body.username }, (err, user) => {
+        if (err) {
+          res.json({ success: flase, message: err });
+        } else if (!user) {
+          res.json({ success: false, message: 'Username not found' });
+        } else {
+          const validPassword = user.comparePassword(req.body.password);
+          if (!validPassword) {
+            res.json({ success: false, message: 'Invalid Password' });
+          } else {
+            const token = jwt.sign({ userId: user._id }, config.secret, { expiresIn: '24h' });
+
+            res.json({
+              success: true,
+              message: 'Success',
+              token: token,
+              user: {
+                username: user.username,
+                name: user.name
+              }
+            });
           }
         }
       });
