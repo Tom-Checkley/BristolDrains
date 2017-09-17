@@ -22,11 +22,11 @@ import { LoginComponent } from './components/login/login.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { RegisterComponent } from './components/register/register.component';
 
-import { AuthGuard } from "./guards/auth.guard";
+// import { AuthGuard } from "./guards/auth.guard";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'admin', component: AdminComponent, canActivate:[AuthGuard] },
+  { path: 'admin', component: AdminComponent/*, canActivate:[AuthGuard]*/ },
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'services', component: ServicesComponent },

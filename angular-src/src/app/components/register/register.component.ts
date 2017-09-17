@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { FlashMessagesService } from "angular2-flash-messages";
 
+import { AuthService } from "../../services/auth.service";
+
 
 
 @Component({
@@ -13,19 +15,24 @@ import { FlashMessagesService } from "angular2-flash-messages";
 export class RegisterComponent implements OnInit {
 
   form: FormGroup;
+  message;
+  messageClass;
+  processing = false;
+  usernameValid;
+  usernameMessage;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private authService: AuthService,
     private flashMessage: FlashMessagesService
   ) {
     this.createForm()
   }
 
-  ngOnInit() {
-  }
 
   createForm() {
+    
     this.form = this.formBuilder.group({
       name: ['', Validators.required ],
       // Username Input
@@ -48,7 +55,6 @@ export class RegisterComponent implements OnInit {
 
   // Function to disable the registration form
   disableForm() {
-    this.form.controls['email'].disable();
     this.form.controls['username'].disable();
     this.form.controls['password'].disable();
     this.form.controls['confirm'].disable();
@@ -56,7 +62,6 @@ export class RegisterComponent implements OnInit {
 
   // Function to enable the registration form
   enableForm() {
-    this.form.controls['email'].enable();
     this.form.controls['username'].enable();
     this.form.controls['password'].enable();
     this.form.controls['confirm'].enable();
@@ -101,7 +106,47 @@ export class RegisterComponent implements OnInit {
   
 
   onRegisterSubmit() {
-    console.log(this.form);
+    this.processing = true;
+    this.disableForm();
+    const user = {
+      name: this.form.get('name').value,
+      username: this.form.get('username').value,
+      password: this.form.get('password').value
+    }
+    this.authService.registerUser(user).subscribe(data => {
+      if(!data.success) {
+        this.messageClass = 'alert alert-danger'; // Set an error class
+        this.message = data.message; // Set an error message
+        this.processing = false; // Re-enable submit button
+        this.enableForm(); // Re-enable form
+      } else {
+        this.messageClass = 'alert alert-success'; // Set a success class
+        this.message = data.message; // Set a success message
+        // After 2 second timeout, navigate to the login page
+        setTimeout(() => {
+          this.router.navigate(['/login']); // Redirect to login view
+        }, 2000);
+      }
+    })
   }
 
+  // Function to check if username is available
+  checkUsername() {
+    // Function from authentication file to check if username is taken
+    this.authService.checkUsername(this.form.get('username').value).subscribe(data => {
+      // Check if success true or success false was returned from API
+      if (!data.success) {
+        this.usernameValid = false; // Return username as invalid
+        this.usernameMessage = data.message; // Return error message
+      } else {
+        this.usernameValid = true; // Return username as valid
+        this.usernameMessage = data.message; // Return success message
+      }
+    });
+  }
+
+  ngOnInit() {
+  }
 }
+
+

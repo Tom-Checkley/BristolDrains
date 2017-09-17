@@ -33,7 +33,7 @@ import { TestimonialService } from './services/testimonial.service';
 import { BlogService } from './services/blog.service';
 import { ValidateService } from "./services/validate.service";
 import { AuthService } from "./services/auth.service";
-import { AuthGuard } from "./guards/auth.guard";
+// import { AuthGuard } from "./guards/auth.guard";
 
 
 
@@ -76,7 +76,7 @@ import { AuthGuard } from "./guards/auth.guard";
     BlogService,
     ValidateService,
     AuthService,
-    AuthGuard
+    // AuthGuard
   ],
   bootstrap: [AppComponent]
 })

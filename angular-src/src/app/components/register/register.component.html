@@ -3,16 +3,16 @@
     <h1 class="heading">Register</h1>
 
     <!-- Custom Success/Error Message -->
-    <!-- <div class="row show-hide-message">
+    <div class="row show-hide-message">
       <div [ngClass]="messageClass">
         {{ message }}
       </div>
-    </div> -->
+    </div>
 
     <div class="form__input">
       <label for="name" class="srt">Name</label>
       <div [ngClass]="{'has-error': (form.controls.name.errors && form.controls.name.dirty),'has-success': !form.controls.name.errors}">
-        <input formControlName="name" class="form__text-input" type="text" name="name" id="name" placeholder="Name">
+        <input autocomplete="off" formControlName="name" class="form__text-input" type="text" name="name" id="name" placeholder="Name">
         <ul class="help-block">
           <li *ngIf="form.controls.name.errors?.required && form.controls.name.dirty">This field is required</li>
         </ul>
@@ -22,7 +22,9 @@
     <div class="form__input">
       <label for="username" class="srt">Name</label>
       <div [ngClass]="{'has-error': (form.controls.username.errors && form.controls.username.dirty) || (!usernameValid && form.controls.username.dirty), 'has-success': !form.controls.username.errors && usernameValid}">
-        <input formControlName="username" class="form__text-input" type="text" name="username" id="name" placeholder="Username">
+
+        <input autocomplete="off" formControlName="username" class="form__text-input" type="text" name="username" id="name" placeholder="Username" (blur)="checkUsername()">
+
         <ul class="help-block">
           <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">This field is required</li>
           <li *ngIf="form.controls.username.errors?.minlength && form.controls.username.dirty">Minimum characters: 5</li>
@@ -45,7 +47,7 @@
     <div class="form__input">
       <label for="password" class="srt">Set Password</label>
       <div [ngClass]="{'has-error': (form.controls.password.errors && form.controls.password.dirty), 'has-success': !form.controls.password.errors}">
-        <input formControlName="password" class="form__text-input" type="password" name="password" id="password" placeholder="Set Password">
+        <input autocomplete="off" formControlName="password" class="form__text-input" type="password" name="password" id="password" placeholder="Set Password">
         <ul class="help-block">
           <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required</li>
           <li *ngIf="form.controls.password.errors?.minlength && form.controls.password.dirty || form.controls.password.errors?.maxlength && form.controls.password.dirty ">Minimum characters: 8</li>
@@ -64,6 +66,6 @@
         </ul>
       </div>
     </div>
-    <input [disabled]="!form.valid || !emailValid || !usernameValid" type="submit" value="Register" class="btn btn--regular">
+    <input [disabled]="!form.valid || processing || !usernameValid" type="submit" value="Register" class="btn btn--regular">
   </form>
 </div>

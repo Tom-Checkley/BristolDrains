@@ -6,6 +6,7 @@ const config = require('./config/database');
 const path = require('path');
 const authentication = require('./routes/authentication')(router);
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // Databasee Connection
 mongoose.Promise = global.Promise;
@@ -24,12 +25,17 @@ const port = 8080;
 // MIDDLEWARE
 ///////////////////////////////////////////////////
 
+// cors
+app.use(cors({
+  origin: 'http://localhost:4200'
+}));
 // parse application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({ extended: false }))
   // parse application/json 
 app.use(bodyParser.json())
   // Set static directory for frontend
 app.use(express.static(__dirname + '/dist/public'));
+
 
 // Pull in authentication routes
 app.use('/authentication', authentication);
