@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 const path = require('path');
 const authentication = require('./routes/authentication')(router);
+const blogs = require('./routes/blog')(router);
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -39,6 +40,8 @@ app.use(express.static(__dirname + '/dist/public'));
 
 // Pull in authentication routes
 app.use('/authentication', authentication);
+// Pull in blog routes
+app.use('/blogs', blogs);
 
 
 

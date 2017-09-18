@@ -1,18 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, RequestOptions } from '@angular/http';
+
+import { AuthService } from './auth.service';
 
 import 'rxjs/add/operator/toPromise';
-
-import { Blog } from "../components/blog/blog";
-import { BLOGS } from "../mock/mock-blogs";
 
 @Injectable()
 export class BlogService {
 
-  constructor() { }
+  options;
+  domain = this.authService.domain;
 
-  getBlogs(): Promise<Blog[]> {
-    return Promise.resolve(BLOGS);
+  constructor(
+    private authService: AuthService,
+    private http: Http
+  ) { }
+
+  createAuthenticationHeaders() {
+    this.authService.loadToken();
+
+    this.options = new RequestOptions({
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'authorization': this.authService.authToken
+      })
+    });
+  }
+
+  newBlog(blog) {
+    this.createAuthenticationHeaders();
+    return this.http.post(this.domain + 'blogs/newBlog', blog, this.options).map(res => res.json());
   }
 
 }

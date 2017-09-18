@@ -19,20 +19,28 @@
       <section [class.active]="blogActive" class="tabbed__panel">
         <div class="blog-entry">
           <h1>Enter new blog post</h1>
-          <!-- <form class="form"> -->
-          <div class="form__input">
-            <label for="file" class="btn btn--regular">Choose a photo</label>
-            <input class="srt" id="file" type="file" name="file" value="Choose Photo">
-          </div>
-          <div class="form__input">
-            <label for="description" class="srt">Enter a brief description of the job</label>
-            <textarea name="descriptinon" id="description" cols="30" rows="6" class="description form__text-input" placeholder="Enter a brief description of the job"></textarea>
-          </div>
-          <div class="form__input">
-            <input type="text" name="location" class="form__text-input" placeholder="Where was the job?">
-          </div>
-          <input class="btn btn--regular" type="submit" value="Post">
-          <!-- </form> -->
+          <!-- Custom Success/Error Message -->
+
+          <!-- <div [ngClass]="messageClass">
+            {{ message }}
+          </div> -->
+
+          <form [formGroup]="form" class="form" (submit)="onBlogSubmit()">
+            <div class="form__input">
+              <label for="file" class="btn btn--regular">Choose a photo</label>
+              <input class="srt" id="file" type="file" name="imgUrl" value="Choose Photo" formControlName="imgUrl">
+            </div>
+            <div class="form__input">
+              <label for="description" class="srt">Enter a brief description of the job</label>
+              <textarea name="blogBody" id="description" cols="30" rows="6" class="description form__text-input" placeholder="Enter a brief description of the job" formControlName="blogBody"></textarea>
+            </div>
+            <div class="form__input">
+              <!-- <div [ngClass]="{'has-success': form.controls.valid, 'has-error': form.contols.locationPosted.dirty && form.controls.locationPosted.errors}"> -->
+              <input type="text" name="locationPosted" class="form__text-input" placeholder="Where was the job?" formControlName="locationPosted">
+              <!-- </div> -->
+            </div>
+            <input [disabled]="processing" class="btn btn--regular" type="submit" value="Post">
+          </form>
         </div>
       </section>
 
