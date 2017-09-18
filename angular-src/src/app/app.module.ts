@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
-import { FlashMessagesModule } from "angular2-flash-messages";
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
-import { AppRoutingModule } from "./app.routing-module";
+import { AppRoutingModule } from './app.routing-module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -31,9 +31,9 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { TestimonialService } from './services/testimonial.service';
 import { BlogService } from './services/blog.service';
-import { ValidateService } from "./services/validate.service";
-import { AuthService } from "./services/auth.service";
-// import { AuthGuard } from "./guards/auth.guard";
+import { ValidateService } from './services/validate.service';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -76,7 +76,7 @@ import { AuthService } from "./services/auth.service";
     BlogService,
     ValidateService,
     AuthService,
-    // AuthGuard
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
