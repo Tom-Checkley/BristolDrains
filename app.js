@@ -4,8 +4,9 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const config = require('./config/database');
 const path = require('path');
+const public = require('./routes/public')(router);
 const authentication = require('./routes/authentication')(router);
-const blogs = require('./routes/blog')(router);
+const admin = require('./routes/admin')(router);
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -37,11 +38,12 @@ app.use(bodyParser.json())
   // Set static directory for frontend
 app.use(express.static(__dirname + '/dist/public'));
 
-
+// Pull in public routes
+app.use('/public', public);
 // Pull in authentication routes
 app.use('/authentication', authentication);
 // Pull in blog routes
-app.use('/blogs', blogs);
+app.use('/admin', admin);
 
 
 

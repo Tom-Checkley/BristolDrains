@@ -17,7 +17,7 @@ const blogSchema = mongoose.Schema({
   },
   posted: {
     type: Date,
-    default: Date.now()
+    default: new Date()
   },
   createdBy: {
     type: String,

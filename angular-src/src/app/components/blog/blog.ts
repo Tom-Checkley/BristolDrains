@@ -1,4 +1,4 @@
-export class Blog {
-	body: string;
-	location: string;
-}
+// export class Blog {
+// 	body: string;
+// 	location: string;
+// }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 
-import { Blog } from "./blog";
-import { BlogService } from "../../services/blog.service";
+// import { Blog } from './blog';
+import { BlogService } from '../../services/blog.service';
 
 @Component({
   selector: 'app-blog',
@@ -10,19 +10,20 @@ import { BlogService } from "../../services/blog.service";
 })
 export class BlogComponent implements OnInit {
 
-  blogs: Blog[];
+  blogPosts;
 
   constructor(
     private blogService: BlogService
   ) { }
 
   ngOnInit() {
-    this.getBlogs();
+    this.getAllBlogs();
   }
 
-  getBlogs(): void {
-    this.blogService.getBlogs()
-        .then(blogs => this.blogs = blogs);
+  getAllBlogs() {
+    this.blogService.getAllBlogs().subscribe(data => {
+      this.blogPosts = data.blogs;
+    });
   }
 
 }

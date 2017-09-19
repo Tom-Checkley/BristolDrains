@@ -20,10 +20,11 @@
         <div class="blog-entry">
           <h1>Enter new blog post</h1>
           <!-- Custom Success/Error Message -->
-
-          <!-- <div [ngClass]="messageClass">
-            {{ message }}
-          </div> -->
+          <div *ngIf="message">
+            <div [ngClass]="messageClass">
+              {{ message }}
+            </div>
+          </div>
 
           <form [formGroup]="form" class="form" (submit)="onBlogSubmit()">
             <div class="form__input">
