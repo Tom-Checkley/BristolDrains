@@ -21,7 +21,7 @@ export class BlogService {
 
     this.options = new RequestOptions({
       headers: new Headers({
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
         'authorization': this.authService.authToken
       })
     });

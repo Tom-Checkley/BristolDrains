@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { ImageResult, ResizeOptions } from 'ng2-imageupload';
 
 // import { Testimonial } from '../testimonials/testimonial';
 
@@ -27,6 +28,21 @@ export class AdminComponent implements OnInit {
   name;
   form;
   processing = false;
+  src;
+
+  resizeOptions: ResizeOptions = {
+    resizeMaxHeight: 400,
+    resizeMaxWidth: 600
+  };
+
+  selected(imageResult: ImageResult) {
+    this.src = imageResult.resized
+    && imageResult.resized.dataURL
+    || imageResult.dataURL;
+    console.log('this.src = ', this.src);
+  }
+
+  
 
   constructor(
     // private testimonialService: TestimonialService,
@@ -37,6 +53,17 @@ export class AdminComponent implements OnInit {
     private flashMessage: FlashMessagesService
   ) {
     this.createNewBlogForm();
+
+    // interface ImageResult {
+    //   file: File;
+    //   url: String;
+    //   error?: String;
+    //   dataUrl?: String;
+    //   resized?: {
+    //     dataURL: String;
+    //     type: String;
+    //   };
+    // }
   }
 
   onLogoutClick() {
@@ -48,19 +75,19 @@ export class AdminComponent implements OnInit {
     this.form = this.formBuilder.group({
       locationPosted: ['', Validators.compose([Validators.required])],
       blogBody: '',
-      imgUrl: '',
+      file: '',
       createdBy: ['', Validators.compose([Validators.required])]
     });
   }
 
   enableFormNewBlogForm() {
-    this.form.get('imgUrl').enable();
+    this.form.get('file').enable();
     this.form.get('blogBody').enable();
     this.form.get('locationPosted').enable();
   }
 
   disableFormNewBlogForm() {
-    this.form.get('imgUrl').disable();
+    this.form.get('file').disable();
     this.form.get('blogBody').disable();
     this.form.get('locationPosted').disable();
   }
@@ -69,13 +96,15 @@ export class AdminComponent implements OnInit {
     this.processing = true;
     this.disableFormNewBlogForm();
 
+    console.log(this.src);
+
     const blog = {
-      imgUrl: this.form.get('imgUrl').value,
+      file: this.form.get('file'),
       blogBody: this.form.get('blogBody').value,
       locationPosted: this.form.get('locationPosted').value,
       createdBy: this.name
     };
-
+    console.log(blog);
     this.blogService.newBlog(blog).subscribe(data => {
       if(!data.success) {
         this.messageClass = 'alert alert-danger';
@@ -92,7 +121,7 @@ export class AdminComponent implements OnInit {
           this.enableFormNewBlogForm();
         }, 2000);
       }
-    })
+    });
   }
 
   ngOnInit() {

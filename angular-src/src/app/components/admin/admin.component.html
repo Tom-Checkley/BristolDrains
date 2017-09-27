@@ -20,17 +20,18 @@
         <div class="blog-entry">
           <h1>Enter new blog post</h1>
           <!-- Custom Success/Error Message -->
-          <div *ngIf="message">
+          <!-- <div *ngIf="message">
             <div [ngClass]="messageClass">
               {{ message }}
             </div>
-          </div>
+          </div> -->
 
           <form [formGroup]="form" class="form" (submit)="onBlogSubmit()">
             <div class="form__input">
               <label for="file" class="btn btn--regular">Choose a photo</label>
-              <input class="srt" id="file" type="file" name="imgUrl" value="Choose Photo" formControlName="imgUrl">
+              <input class="" id="file" imageUpload (imageSelected)="selected($event)" [resizeOptions]="resizeOptions" type="file" name="file" multiple formControlName="file">
             </div>
+            <img [src]="src" [hidden]="!src">
             <div class="form__input">
               <label for="description" class="srt">Enter a brief description of the job</label>
               <textarea name="blogBody" id="description" cols="30" rows="6" class="description form__text-input" placeholder="Enter a brief description of the job" formControlName="blogBody"></textarea>

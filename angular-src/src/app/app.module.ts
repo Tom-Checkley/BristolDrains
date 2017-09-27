@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { ImageUploadModule } from 'ng2-imageupload';
 
 import { AppRoutingModule } from './app.routing-module';
 
@@ -70,6 +71,7 @@ import { AuthGuard } from './guards/auth.guard';
     HttpModule,
     BrowserAnimationsModule,
     FlashMessagesModule,
+    ImageUploadModule,
   ],
   providers: [
     TestimonialService,

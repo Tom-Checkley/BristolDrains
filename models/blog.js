@@ -12,8 +12,8 @@ const blogSchema = mongoose.Schema({
   blogBody: {
     type: String
   },
-  imgUrl: {
-    type: String
+  file: {
+    type: {}
   },
   posted: {
     type: Date,

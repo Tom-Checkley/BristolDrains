@@ -1,6 +1,6 @@
 import { Component, OnInit, trigger, state, style, transition, animate, Injectable } from '@angular/core';
 import { Router } from "@angular/router";
-// import {  } from "@angular/forms";
+import { FormControl, FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import 'rxjs/add/operator/map';
 
@@ -31,25 +31,52 @@ import { TestimonialService } from "../../services/testimonial.service";
 
 export class TestimonialsComponent implements OnInit {
   
-  testimonials: Testimonial[];
+  messageClass;
+  message;
+  form;
 
   feedbackState = 'out';
 
   constructor(
-    private testimonialService: TestimonialService
-  ) {  }
+    private testimonialService: TestimonialService,
+    private formBuilder: FormBuilder,
+    private formGroup: FormGroup,
+    private formControl: FormControl,
+    private validators: Validators
+  ) {
+    // this.createNewTestimonialForm();
+  }
+  
+  // createNewTestimonialForm() {
+  //   this.form = this.formBuilder.group({
+  //     name: ['', Validators.compose([
+  //       Validators.required
+  //     ])],
+  //     location: ['', Validators.compose([
+  //       Validators.required
+  //     ])],
+  //     message: ['', Validators.compose([
+  //       Validators.required
+  //     ])]
+  //   })
+  // }
 
   ngOnInit() {
-    this.getTestimonials();
+    // this.getTestimonials();
+    // this.testimonialService.verifiedTestimonials()
+    //   .subscribe(testimonials => this.testimonials = testimonials);
   }
 
   toggleMenu() {
     this.feedbackState = this.feedbackState === 'out' ? 'in' : 'out';
   }
 
-  getTestimonials(): void {
-    this.testimonialService.verifiedTestimonials()
-        .subscribe(testimonials => this.testimonials = testimonials);
+  onTestimonialSubmit() {
+    console.log('testimonial submitted')
   }
+
+  // getTestimonials(): void {
+    
+  // }
 
 }

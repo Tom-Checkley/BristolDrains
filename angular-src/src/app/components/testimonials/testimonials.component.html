@@ -1,20 +1,20 @@
-<div class="page testimonials">
-  <form [@slideInOut]="feedbackState" action="" class="testimonial form skewed__container">
+<!-- <div class="page testimonials">
+  <form [@slideInOut]="feedbackState" [formGroup]="form" name="testimonialForm" (submit)="onTestimonialSubmit()" class="testimonial form skewed__container">
     <div class="skewed skewed--full bg">
       <div class="skewed__content">
         <button class="feedback__close" (click)="toggleMenu()"><i>&#10006;</i></button>
         <h1 class="heading">Leave Feedback</h1>
         <div class="form__input">
           <label class="srt" for="name">Name</label>
-          <input ty class="form__text-input" pe="text" id="name" placeholder="Name">
+          <input formControlName="name" class="form__text-input" name="name" type="text" id="name" placeholder="Name">
         </div>
         <div class="form__input">
           <label class="srt" for="location">Location</label>
-          <input ty class="form__text-input" pe="text" id="location" placeholder="Location">
+          <input formControlName="location" class="form__text-input" name="location" type="text" id="location" placeholder="Location">
         </div>
         <div class="form__input">
           <label class="srt" for="testimonial-body">Let us know how we've done</label>
-          <textarea class="form__text-input" rows="10" cols="25" id="testimonial-body" placeholder="Let us know how we've done"></textarea>
+          <textarea formControlName="message" class="form__text-input" rows="10" name="message" cols="25" id="testimonial-body" placeholder="Let us know how we've done"></textarea>
         </div>
         <div class="form__input">
           <input class="btn btn--regular" type="submit" value="Leave Feedback">
@@ -30,7 +30,7 @@
       <button (click)="toggleMenu()" class="btn btn--regular">Leave Feedback</button>
     </header>
 
-    <!-- <div class="testimonial" *ngFor="let testimonial of testimonials">
+    <div class="testimonial" *ngFor="let testimonial of testimonials">
       <blockquote>
         <p class="testimonial__body"><span class="quote quote--open">&#8220;</span>{{testimonial.body}}<span class="quote quote--close">&#8221;</span></p>
         <cite class="testimonial.author">{{testimonial.author}}</cite>
@@ -38,7 +38,7 @@
         <hr>
       </blockquote>
       <br>
-    </div> -->
-  </main>
-  <app-policies class="aside"></app-policies>
-</div>
+    </div>
+</main>
+<app-policies class="aside"></app-policies>
+</div> -->

@@ -1,13 +1,21 @@
 <div class="page page--no-skew">
-  <ul class="blogs">
+  <ul class="blog" *ngIf="blogPosts">
     <li *ngFor="let blog of blogPosts" class="blog">
-      <div>
+      <div class="blog__blog">
         <h2>{{blog.locationPosted}}</h2>
         <p>{{blog.blogBody}}</p>
-        <p>{{blog.posted | date: ddMMyyyy}}</p>
+        <p>{{blog.posted | date: 'dd MMM yyyy HH:mm'}}</p>
         <p>{{blog.createdBy}}</p>
+      </div>
+      <div class="blog__actions" *ngIf="authService.loggedIn()">
+        <a [routerLink]="['/edit-blog', blog._id]">Edit</a>
+
+        <a (click)="deleteBlog" class="btn">Delete</a>
       </div>
       <hr>
     </li>
   </ul>
+  <div *ngIf="noBlogs">
+    <h2>There are currently no blog posts to display</h2>
+  </div>
 </div>

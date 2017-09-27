@@ -15,12 +15,11 @@ const TestimonialsSchema = mongoose.Schema({
     required: true
   },
   verified: {
-    type: Boolean,
-    required: true
+    type: Boolean
   },
   date: {
-    type: String,
-    required: true
+    type: Date,
+    default: Date.now()
   }
 });
 
