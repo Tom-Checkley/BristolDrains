@@ -12,7 +12,7 @@ const cors = require('cors');
 
 // Databasee Connection
 mongoose.Promise = global.Promise;
-mongoose.connect(config.uri, (err) => {
+mongoose.connect(config.uri, { useMongoClient: true }, (err) => {
   if (err) {
     console.log('Could NOT connect to database: ' + err);
   } else {
@@ -34,8 +34,8 @@ app.use(cors({
 // parse application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({ extended: false }))
   // parse application/json 
-app.use(bodyParser.json())
-  // Set static directory for frontend
+app.use(bodyParser.json());
+// Set static directory for frontend
 app.use(express.static(__dirname + '/dist/public'));
 
 // Pull in public routes
