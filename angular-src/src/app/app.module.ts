@@ -69,6 +69,7 @@ import { AuthGuard } from './guards/auth.guard';
     BrowserModule,
     ReactiveFormsModule,
     HttpModule,
+    // Headers,
     BrowserAnimationsModule,
     FlashMessagesModule,
     ImageUploadModule,

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const config = require('../config/database');
 
 const TestimonialsSchema = mongoose.Schema({
-  name: {
+  author: {
     type: String,
     required: true
   },
@@ -10,12 +10,13 @@ const TestimonialsSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  message: {
+  body: {
     type: String,
     required: true
   },
   verified: {
-    type: Boolean
+    type: Boolean,
+    default: false
   },
   date: {
     type: Date,
@@ -24,11 +25,3 @@ const TestimonialsSchema = mongoose.Schema({
 });
 
 const Testimonials = module.exports = mongoose.model('Testimonials', TestimonialsSchema);
-
-module.exports.addTestiomonial = function(newTestimonial, callback) {
-  newTestimonial.save(callback);
-};
-
-// module.exports.getVerifiedTestimonials = function(verified, callback) {
-
-// }

@@ -1,13 +1,11 @@
 import { Component, OnInit, trigger, state, style, transition, animate, Injectable } from '@angular/core';
-import { Router } from "@angular/router";
-import { FormControl, FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import 'rxjs/add/operator/map';
 
 import { Testimonial } from './testimonial';
-import { TestimonialService } from "../../services/testimonial.service";
-
-  
+import { TestimonialService } from '../../services/testimonial.service';
 
 @Component({
   selector: 'app-testimonials',
@@ -30,41 +28,27 @@ import { TestimonialService } from "../../services/testimonial.service";
 })
 
 export class TestimonialsComponent implements OnInit {
-  
   messageClass;
   message;
   form;
+  body;
+  location;
+  name;
+  testimonial;
+  verifiedTestimonials;
+
 
   feedbackState = 'out';
 
   constructor(
     private testimonialService: TestimonialService,
-    private formBuilder: FormBuilder,
-    private formGroup: FormGroup,
-    private formControl: FormControl,
-    private validators: Validators
-  ) {
-    // this.createNewTestimonialForm();
-  }
-  
-  // createNewTestimonialForm() {
-  //   this.form = this.formBuilder.group({
-  //     name: ['', Validators.compose([
-  //       Validators.required
-  //     ])],
-  //     location: ['', Validators.compose([
-  //       Validators.required
-  //     ])],
-  //     message: ['', Validators.compose([
-  //       Validators.required
-  //     ])]
-  //   })
-  // }
+  ) { }
 
   ngOnInit() {
-    // this.getTestimonials();
-    // this.testimonialService.verifiedTestimonials()
-    //   .subscribe(testimonials => this.testimonials = testimonials);
+    this.testimonialService.getVerifiedTestimonials().subscribe(data => {
+      this.verifiedTestimonials = data.testimonials;
+    });
+    
   }
 
   toggleMenu() {
@@ -72,11 +56,16 @@ export class TestimonialsComponent implements OnInit {
   }
 
   onTestimonialSubmit() {
-    console.log('testimonial submitted')
+    const testimonial = {
+      location: this.location,
+      author: this.name,
+      body: this.message
+    };
+    this.testimonialService.postTestimonial(testimonial).subscribe(data => {
+      if (!data.success) {
+        console.log(data.err);
+      }
+      this.testimonial = data.testimonial;
+    });
   }
-
-  // getTestimonials(): void {
-    
-  // }
-
 }

@@ -61,5 +61,17 @@ module.exports = (router) => {
     });
   });
 
+  router.get('/verifiedTestimonials', (req, res) => {
+    Testimonial.find({ verified: true }, (err, testimonials) => {
+      if (err) {
+        res.json({ success: false, message: err });
+      } else if (!testimonials) {
+        res.json({ success: false, message: 'No testimonials found.' });
+      } else {
+        res.json({ success: true, testimonials });
+      }
+    });
+  });
+
   return router;
 };
